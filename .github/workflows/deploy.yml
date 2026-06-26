@@ -57,3 +57,25 @@ jobs:
       # Step 8 - Deployment Successful
       - name: Deployment Completed
         run: echo "Frontend Successfully Deployed to AWS S3 "
+      # Step 9 - CloudFront Invalidation
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation \
+          --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+          --paths "/*"
+          
+  deploy-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd employee-portal-devops
+            git pull origin main
+            sudo systemctl restart gunicorn
+            sudo systemctl restart nginx
