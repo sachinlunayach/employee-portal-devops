@@ -6,7 +6,7 @@ button.addEventListener("click", async () => {
     const employeeId = document.getElementById("employeeId").value;
 
     if (!employeeId) {
-        result.innerHTML = "<p>Please enter Employee ID</p>";
+        result.innerHTML = "<p>Please enter Employee ID here</p>";
         return;
     }
 
