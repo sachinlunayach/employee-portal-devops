@@ -1,0 +1,20 @@
+[
+    {
+        "id": 101,
+        "name": "Sachin",
+        "role": "DevOps Engineer",
+        "salary": "₹1,20,000"
+    },
+    {
+        "id": 102,
+        "name": "Rahul",
+        "role": "Cloud Engineer",
+        "salary": "₹95,000"
+    },
+    {
+        "id": 103,
+        "name": "Aman",
+        "role": "Python Developer",
+        "salary": "₹80,000"
+    }
+]
