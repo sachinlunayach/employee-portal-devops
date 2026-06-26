@@ -6,42 +6,17 @@ on:
       - main
 
 jobs:
-  deploy:
 
+  # =========================
+  # FRONTEND DEPLOY (S3)
+  # =========================
+  deploy-frontend:
     runs-on: ubuntu-latest
 
     steps:
-
-      # Step 1 - Repository Checkout
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Step 2 - Python Setup
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      # Step 3 - Install Backend Dependencies
-      - name: Install Python Dependencies
-        run: |
-          cd backend
-          pip install -r requirements.txt
-
-      # Step 4 - Validate Flask App
-      - name: Validate Flask Application
-        run: |
-          cd backend
-          python -m py_compile app.py
-
-      # Step 5 - Verify Frontend Files
-      - name: Verify Frontend Files
-        run: |
-          test -f frontend/index.html
-          test -f frontend/style.css
-          test -f frontend/app.js
-
-      # Step 6 - Configure AWS Credentials
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -49,33 +24,44 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      # Step 7 - Deploy Frontend to S3
-      - name: Deploy Frontend to S3
+      - name: Deploy to S3
         run: |
           aws s3 sync frontend/ s3://employee-portal-frontend-sachin --delete
 
-      # Step 8 - Deployment Successful
-      - name: Deployment Completed
-        run: echo "Frontend Successfully Deployed to AWS S3 "
-      # Step 9 - CloudFront Invalidation
       - name: Invalidate CloudFront Cache
         run: |
           aws cloudfront create-invalidation \
-          --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-          --paths "/*"
-          
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
+
+  # =========================
+  # BACKEND DEPLOY (EC2)
+  # =========================
   deploy-backend:
     runs-on: ubuntu-latest
+    needs: deploy-frontend   # frontend success ke baad backend deploy
 
     steps:
-      - name: Deploy to EC2 via SSH
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Backend via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
-            cd employee-portal-devops
+            cd /home/ubuntu/employee-portal-devops
+
+            echo "Pulling latest code..."
             git pull origin main
+
+            echo "Installing dependencies..."
+            pip3 install -r backend/requirements.txt
+
+            echo "Restarting services..."
             sudo systemctl restart gunicorn
             sudo systemctl restart nginx
+
+            echo "Backend deployment completed"
