@@ -12,8 +12,7 @@ button.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch("http://44.199.243.207/employee?id=" + employeeId);
-
+        const response = await fetch("https://djrsvxg7njjaz.cloudfront.net/employee?id=" + employeeId);
         if (!response.ok) {
             throw new Error("Employee Not Found");
         }
