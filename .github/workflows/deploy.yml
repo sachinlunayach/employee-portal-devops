@@ -1,0 +1,65 @@
+name: Employee Portal CI
+
+on:
+
+  push:
+
+    branches:
+
+      - main
+
+  pull_request:
+
+    branches:
+
+      - main
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+
+        uses: actions/setup-python@v5
+
+        with:
+
+          python-version: "3.12"
+
+      - name: Install Dependencies
+
+        run: |
+
+          cd backend
+
+          pip install -r requirements.txt
+
+      - name: Check Flask App
+
+        run: |
+
+          cd backend
+
+          python -m py_compile app.py
+
+      - name: Frontend Exists
+
+        run: |
+
+          test -f frontend/index.html
+
+          test -f frontend/style.css
+
+          test -f frontend/app.js
+
+      - name: Success
+
+        run: echo "CI Passed Successfully "
