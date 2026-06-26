@@ -1,65 +1,59 @@
-name: Employee Portal CI
+name: Employee Portal CI/CD
 
 on:
-
   push:
-
     branches:
-
-      - main
-
-  pull_request:
-
-    branches:
-
       - main
 
 jobs:
-
-  build:
+  deploy:
 
     runs-on: ubuntu-latest
 
     steps:
 
+      # Step 1 - Repository Checkout
       - name: Checkout Repository
-
         uses: actions/checkout@v4
 
+      # Step 2 - Python Setup
       - name: Setup Python
-
         uses: actions/setup-python@v5
-
         with:
-
           python-version: "3.12"
 
-      - name: Install Dependencies
-
+      # Step 3 - Install Backend Dependencies
+      - name: Install Python Dependencies
         run: |
-
           cd backend
-
           pip install -r requirements.txt
 
-      - name: Check Flask App
-
+      # Step 4 - Validate Flask App
+      - name: Validate Flask Application
         run: |
-
           cd backend
-
           python -m py_compile app.py
 
-      - name: Frontend Exists
-
+      # Step 5 - Verify Frontend Files
+      - name: Verify Frontend Files
         run: |
-
           test -f frontend/index.html
-
           test -f frontend/style.css
-
           test -f frontend/app.js
 
-      - name: Success
+      # Step 6 - Configure AWS Credentials
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
-        run: echo "CI Passed Successfully "
+      # Step 7 - Deploy Frontend to S3
+      - name: Deploy Frontend to S3
+        run: |
+          aws s3 sync frontend/ s3://employee-portal-frontend-sachin --delete
+
+      # Step 8 - Deployment Successful
+      - name: Deployment Completed
+        run: echo "Frontend Successfully Deployed to AWS S3 "
