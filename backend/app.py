@@ -10,6 +10,9 @@ def load_employees():
     with open("employee.json", "r") as file:
         return json.load(file)
 
+@app.route("/")
+def home():
+    return "Employee Portal Backend is Running "
 
 @app.route("/employee")
 def get_employee():
