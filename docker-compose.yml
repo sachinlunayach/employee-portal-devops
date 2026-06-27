@@ -1,0 +1,41 @@
+services:
+  backend:
+    build:
+      context: ./backend
+
+    container_name: employee-backend
+
+    ports:
+      - "5001:5000"
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17
+
+    container_name: employee-postgres
+
+    environment:
+      POSTGRES_DB: employee_db
+      POSTGRES_USER: employee
+      POSTGRES_PASSWORD: employee123
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
