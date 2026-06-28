@@ -37,5 +37,20 @@ services:
 
     restart: unless-stopped
 
+  redis:
+    image: redis:7-alpine
+
+    container_name: employee-redis
+
+    ports:
+      - "6379:6379"
+
+    restart: unless-stopped
+
+    volumes:
+      - redis_data:/data
+
+    command: redis-server --appendonly yes
 volumes:
   postgres_data:
+  redis_data:
