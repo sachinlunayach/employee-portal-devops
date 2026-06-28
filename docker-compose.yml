@@ -85,7 +85,48 @@ services:
 
     depends_on:
       - prometheus
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: employee-node-exporter
+    restart: unless-stopped
 
+    ports:
+      - "9100:9100"
+
+    command:
+      - '--path.rootfs=/host'
+
+    pid: host
+
+    volumes:
+      - '/:/host:ro,rslave'
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:latest
+    container_name: employee-postgres-exporter
+    restart: always
+
+    environment:
+      DATA_SOURCE_NAME: "postgresql://postgres:postgres@postgres:5432/employee_db?sslmode=disable"
+
+    ports:
+      - "9187:9187"
+
+    depends_on:
+      - postgres
+
+  redis-exporter:
+    image: oliver006/redis_exporter:latest
+    container_name: employee-redis-exporter
+    restart: always
+
+    environment:
+      REDIS_ADDR: redis://redis:6379
+
+    ports:
+      - "9121:9121"
+
+    depends_on:
+      - redis
 volumes:
   postgres_data:
   redis_data:

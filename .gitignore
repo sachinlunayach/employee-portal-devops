@@ -1,3 +1,38 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+
+venv/
+backend/venv/
+
+# Environment Variables
+
 .env
-__pycache__/
-*.pyc
+.env.*
+
+# Logs
+
+*.log
+
+# AWS Keys
+
+*.pem
+
+# IDE Files
+
+.vscode/
+.idea/
+
+# Python Cache
+
+.pytest_cache/
+.mypy_cache/
+
+# OS Files
+
+.DS_Store
+Thumbs.db
