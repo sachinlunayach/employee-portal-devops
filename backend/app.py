@@ -1,88 +1,225 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+
 import json
 import redis
 
 from config import Config
 from models import db, Employee
 
+from prometheus_client import (
+    Counter,
+    Histogram,
+    generate_latest,
+    CONTENT_TYPE_LATEST
+)
+
+# -----------------------------------------
+# Flask App
+# -----------------------------------------
+
 app = Flask(__name__)
 app.config.from_object(Config)
 
 CORS(app)
 
-# -----------------------------
+# -----------------------------------------
 # Redis Connection
-# -----------------------------
+# -----------------------------------------
+
 redis_client = redis.Redis(
     host="redis",
     port=6379,
     decode_responses=True
 )
 
-# -----------------------------
+# -----------------------------------------
+# Prometheus Metrics
+# -----------------------------------------
+
+employee_requests = Counter(
+    "employee_requests_total",
+    "Total Employee API Requests"
+)
+
+cache_hits = Counter(
+    "employee_cache_hits_total",
+    "Total Redis Cache Hits"
+)
+
+cache_misses = Counter(
+    "employee_cache_miss_total",
+    "Total Redis Cache Misses"
+)
+
+employees_created = Counter(
+    "employee_created_total",
+    "Total Employees Created"
+)
+
+employees_updated = Counter(
+    "employee_updated_total",
+    "Total Employees Updated"
+)
+
+request_duration = Histogram(
+    "employee_request_duration_seconds",
+    "Employee API Response Time"
+)
+
+# -----------------------------------------
 # Database Initialization
-# -----------------------------
+# -----------------------------------------
+
 db.init_app(app)
 
 with app.app_context():
     db.create_all()
 
+# -----------------------------------------
+# Home Route
+# -----------------------------------------
 
-# -----------------------------
-# Home
-# -----------------------------
 @app.route("/")
 def home():
-    return "Employee Portal Backend is Running"
+
+    return jsonify({
+        "message": "Employee Portal Backend Running"
+    })
+
+# -----------------------------------------
+# Health Check
+# -----------------------------------------
+
+@app.route("/health")
+def health():
+
+    try:
+
+        db.session.execute(db.text("SELECT 1"))
+
+        return jsonify({
+            "status": "healthy",
+            "database": "connected",
+            "redis": "connected",
+            "service": "employee-backend"
+        }), 200
+
+    except Exception as e:
+
+        return jsonify({
+            "status": "unhealthy",
+            "error": str(e)
+        }), 500
+
+# -----------------------------------------
+# Prometheus Metrics Endpoint
+# -----------------------------------------
+
+@app.route("/metrics")
+def metrics():
+
+    return (
+        generate_latest(),
+        200,
+        {
+            "Content-Type": CONTENT_TYPE_LATEST
+        }
+    )
+
+# -----------------------------------------
+# Redis Test
+# -----------------------------------------
+
+@app.route("/redis-test")
+def redis_test():
+
+    redis_client.set(
+        "message",
+        "Hello Redis"
+    )
+
+    value = redis_client.get("message")
+
+    return jsonify({
+        "redis": value
+    })
+
+# -----------------------------------------
+# GET Employee
+# -----------------------------------------
 
 
-# -----------------------------
-# Get Employee (Redis + PostgreSQL)
-# -----------------------------
-@app.route("/employee")
+@app.route("/employee", methods=["GET"])
+@request_duration.time()
 def get_employee():
+
+    employee_requests.inc()
 
     employee_id = request.args.get("id", type=int)
 
     if employee_id is None:
-        return jsonify({"message": "Employee ID is required"}), 400
 
-    # Redis Key
+        return jsonify({
+            "message": "Employee ID is required"
+        }), 400
+
     cache_key = f"employee:{employee_id}"
 
-    # -----------------------------
-    # Check Redis First
-    # -----------------------------
+    # ---------------------------------
+    # Check Redis Cache
+    # ---------------------------------
+
     cached_employee = redis_client.get(cache_key)
 
     if cached_employee:
-        print("✅ Cache Hit")
-        return jsonify(json.loads(cached_employee))
 
-    print("❌ Cache Miss")
+        cache_hits.inc()
 
-    # -----------------------------
-    # Fetch From PostgreSQL
-    # -----------------------------
-    employee = Employee.query.filter_by(id=employee_id).first()
+        return jsonify(
+            json.loads(cached_employee)
+        )
 
-    if not employee:
-        return jsonify({"message": "Employee Not Found"}), 404
+    # ---------------------------------
+    # Cache Miss
+    # ---------------------------------
+
+    cache_misses.inc()
+
+    employee = Employee.query.filter_by(
+        id=employee_id
+    ).first()
+
+    if employee is None:
+
+        return jsonify({
+            "message": "Employee Not Found"
+        }), 404
 
     employee_data = employee.to_dict()
 
-    # -----------------------------
-    # Save Into Redis (5 Minutes)
-    # -----------------------------
+    # ---------------------------------
+    # Save Employee Into Redis
+    # ---------------------------------
+
     redis_client.setex(
+
         cache_key,
+
         300,
+
         json.dumps(employee_data)
+
     )
 
     return jsonify(employee_data)
+
+# -----------------------------------------
+# Add Employee
+# -----------------------------------------
+
 @app.route("/employee", methods=["POST"])
+@request_duration.time()
 def add_employee():
 
     data = request.get_json()
@@ -92,17 +229,27 @@ def add_employee():
             "message": "Request body is required"
         }), 400
 
-    required_fields = ["id", "name", "role", "salary"]
+    required_fields = [
+        "id",
+        "name",
+        "role",
+        "salary"
+    ]
 
     for field in required_fields:
+
         if field not in data:
+
             return jsonify({
                 "message": f"{field} is required"
             }), 400
 
-    existing_employee = Employee.query.filter_by(id=data["id"]).first()
+    existing_employee = Employee.query.filter_by(
+        id=data["id"]
+    ).first()
 
     if existing_employee:
+
         return jsonify({
             "message": "Employee already exists"
         }), 409
@@ -119,8 +266,15 @@ def add_employee():
         db.session.add(employee)
         db.session.commit()
 
+        employees_created.inc()
+
+        redis_client.delete(
+            f"employee:{employee.id}"
+        )
+
         return jsonify({
-            "message": "Employee Added Successfully"
+            "message": "Employee Added Successfully",
+            "employee": employee.to_dict()
         }), 201
 
     except Exception as e:
@@ -132,21 +286,31 @@ def add_employee():
             "error": str(e)
         }), 500
 
+
+# -----------------------------------------
+# Update Employee
+# -----------------------------------------
+
 @app.route("/employee/<int:employee_id>", methods=["PUT"])
+@request_duration.time()
 def update_employee(employee_id):
 
     data = request.get_json()
 
     if not data:
+
         return jsonify({
             "message": "Request body is required"
         }), 400
 
-    employee = Employee.query.filter_by(id=employee_id).first()
+    employee = Employee.query.filter_by(
+        id=employee_id
+    ).first()
 
-    if not employee:
+    if employee is None:
+
         return jsonify({
-            "message": "Employee not found"
+            "message": "Employee Not Found"
         }), 404
 
     try:
@@ -161,10 +325,17 @@ def update_employee(employee_id):
             employee.salary = data["salary"]
 
         db.session.commit()
-        redis_client.delete(f"employee:{employee_id}")
+
+        employees_updated.inc()
+
+        # Cache Invalidation
+        redis_client.delete(
+            f"employee:{employee_id}"
+        )
 
         return jsonify({
-            "message": "Employee Updated Successfully"
+            "message": "Employee Updated Successfully",
+            "employee": employee.to_dict()
         }), 200
 
     except Exception as e:
@@ -175,48 +346,15 @@ def update_employee(employee_id):
             "message": "Failed to update employee",
             "error": str(e)
         }), 500
-# -----------------------------
-# Health Check
-# -----------------------------
-@app.route("/health")
-def health():
-
-    try:
-
-        db.session.execute(db.text("SELECT 1"))
-
-        return jsonify({
-            "status": "healthy",
-            "database": "connected",
-            "service": "employee-backend"
-        }), 200
-
-    except Exception as e:
-
-        return jsonify({
-            "status": "unhealthy",
-            "database": "disconnected",
-            "error": str(e)
-        }), 500
 
 
-# -----------------------------
-# Redis Test
-# -----------------------------
-@app.route("/redis-test")
-def redis_test():
+# -----------------------------------------
+# Run Flask App
+# -----------------------------------------
 
-    redis_client.set("message", "Hello Redis")
-
-    value = redis_client.get("message")
-
-    return jsonify({
-        "redis": value
-    })
-
-
-# -----------------------------
-# Run App
-# -----------------------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=True
+    )
