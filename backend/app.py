@@ -115,8 +115,10 @@ def home():
 def health():
 
     try:
-
+         # PostgreSQL Check
         db.session.execute(db.text("SELECT 1"))
+        # Redis Check
+        redis_client.ping()
 
         return jsonify({
             "status": "healthy",
@@ -236,6 +238,7 @@ def get_employee():
     return jsonify(employee_data)
 
 @app.route("/employees", methods=["GET"])
+@request_duration.time()
 def get_all_employees():
     employee_list_requests.inc()
     cache_key = "employees:all"
@@ -430,6 +433,7 @@ def update_employee(employee_id):
 # -----------------------------------------
 
 @app.route("/employee/<int:employee_id>", methods=["DELETE"])
+@request_duration.time()
 def delete_employee(employee_id):
 
     employee = Employee.query.filter_by(
