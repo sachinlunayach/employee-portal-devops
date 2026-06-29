@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="hr_dashboard.css">
+</head>
+<body>
+    <!-- ==========================================
+     Navigation
+========================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        👨‍💼 HR Management Dashboard
+
+    </div>
+
+    <div class="nav-actions">
+
+        <span id="backendStatus" class="status online">
+
+            🟢 Backend Healthy
+
+        </span>
+
+        <a
+            href="index.html"
+            class="dashboard-btn">
+
+            ← Employee Portal
+
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- ==========================================
+     Hero
+========================================== -->
+
+<section class="hero">
+
+    <h1>
+
+        Human Resource Dashboard
+
+    </h1>
+
+    <p>
+
+        Manage employees in real-time with PostgreSQL,
+        Redis Cache, Docker and Prometheus Monitoring.
+
+    </p>
+
+</section>
+
+<!-- ==========================================
+     Dashboard Statistics
+========================================== -->
+
+<section class="stats">
+
+    <div class="stat-card">
+
+        <h2 id="totalEmployees">
+
+            --
+
+        </h2>
+
+        <p>
+
+            Total Employees
+
+        </p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2>
+
+            🟢
+
+        </h2>
+
+        <p>
+
+            Backend Healthy
+
+        </p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2>
+
+            🐘
+
+        </h2>
+
+        <p>
+
+            PostgreSQL Connected
+
+        </p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2>
+
+            ⚡
+
+        </h2>
+
+        <p>
+
+            Redis Active
+
+        </p>
+
+    </div>
+
+</section>
+<!-- ==========================================
+     Search Employee
+========================================== -->
+
+<section class="search-section">
+
+    <div class="search-card">
+
+        <h2>
+
+            🔍 Search Employee
+
+        </h2>
+
+        <div class="search-box">
+
+            <input
+
+                type="number"
+
+                id="searchEmployeeId"
+
+                placeholder="Enter Employee ID"
+
+                autocomplete="off">
+
+            <button
+
+                id="clearSearchBtn"
+
+                class="clear-btn">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <button id="searchEmployeeBtn">
+
+            Search Employee
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     Employee Details
+========================================== -->
+
+<section class="employee-form-section">
+
+    <div class="form-card">
+
+        <h2>
+
+            👤 Employee Details
+
+        </h2>
+
+        <div class="form-grid">
+
+            <!-- Employee ID -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Employee ID
+
+                </label>
+
+                <input
+
+                    type="number"
+
+                    id="employeeId"
+
+                    placeholder="Employee ID">
+
+            </div>
+
+            <!-- Employee Name -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Employee Name
+
+                </label>
+
+                <input
+
+                    type="text"
+
+                    id="employeeName"
+
+                    placeholder="Employee Name">
+
+            </div>
+
+            <!-- Employee Role -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Employee Role
+
+                </label>
+
+                <input
+
+                    type="text"
+
+                    id="employeeRole"
+
+                    placeholder="Employee Role">
+
+            </div>
+
+            <!-- Employee Salary -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Employee Salary
+
+                </label>
+
+                <input
+
+                    type="text"
+
+                    id="employeeSalary"
+
+                    placeholder="Employee Salary">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ==========================================
+     CRUD Actions
+========================================== -->
+
+<section class="crud-section">
+
+    <div class="crud-card">
+
+        <h2>
+
+            ⚙ Employee Actions
+
+        </h2>
+
+        <div class="crud-buttons">
+
+            <button
+
+                id="addEmployeeBtn"
+
+                class="btn btn-success">
+
+                ➕ Add Employee
+
+            </button>
+
+            <button
+
+                id="updateEmployeeBtn"
+
+                class="btn btn-primary">
+
+                ✏ Update Employee
+
+            </button>
+
+            <button
+
+                id="deleteEmployeeBtn"
+
+                class="btn btn-danger">
+
+                🗑 Delete Employee
+
+            </button>
+
+            <button
+
+                id="resetFormBtn"
+
+                class="btn btn-secondary">
+
+                🔄 Reset Form
+
+            </button>
+
+            <button
+
+                id="refreshEmployeesBtn"
+
+                class="btn btn-info">
+
+                🔃 Refresh List
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     Employee Table
+========================================== -->
+
+<section class="employee-table-section">
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h2>
+
+                👥 All Employees
+
+            </h2>
+
+            <span id="employeeTableCount" class="badge">
+
+                0 Employees
+
+            </span>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table id="employeeTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Name</th>
+
+                        <th>Role</th>
+
+                        <th>Salary</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="employeeTableBody">
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            Loading employees...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ==========================================
+     Footer
+========================================== -->
+
+<footer class="footer">
+
+    <p>
+
+        Built with
+
+        Docker • Flask • PostgreSQL • Redis • Prometheus • Grafana • AWS
+
+    </p>
+
+    <p>
+
+        © 2026 Employee Management Dashboard
+
+    </p>
+
+</footer>
+
+<!-- ==========================================
+     Toast Notification
+========================================== -->
+
+<div id="toast" class="toast">
+
+    <span id="toastMessage">
+
+        Success
+
+    </span>
+
+</div>
+
+<!-- ==========================================
+     Loading Overlay
+========================================== -->
+
+<div id="loadingOverlay" class="loading-overlay hidden">
+
+    <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <h3>
+
+            Processing Request...
+
+        </h3>
+
+        <p>
+
+            Please wait...
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     Scripts
+========================================== -->
+
+<script src="hr_dashboard.js"></script>
+
+</body>
+
+</html>
+</body>
+</html>

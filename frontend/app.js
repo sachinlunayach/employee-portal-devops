@@ -115,21 +115,27 @@ async function searchEmployee() {
 
         result.innerHTML = `
 
-            <div class="empty-state">
+           <div class="empty-state">
 
-                <h3>
+    <h2>
 
-                    Employee ID Required
+        🔍
 
-                </h3>
+    </h2>
 
-                <p>
+    <h3>
 
-                    Please enter a valid Employee ID.
+        Employee ID Required
 
-                </p>
+    </h3>
 
-            </div>
+    <p>
+
+        Enter an Employee ID to search.
+
+    </p>
+
+</div>
 
         `;
 	    showToast(
@@ -156,19 +162,15 @@ async function searchEmployee() {
 
             <div class="empty-state">
 
-                <h3>
+    <div class="spinner"></div>
 
-                    Searching...
+    <h3>
 
-                </h3>
+        Searching...
 
-                <p>
+    </h3>
 
-                    Please wait.
-
-                </p>
-
-            </div>
+</div>
 
         `;
 
@@ -204,11 +206,25 @@ async function searchEmployee() {
 
                     </span>
 
-                    <span class="info-value">
+                    <div style="display:flex;align-items:center;gap:10px;">
 
-                        ${employee.id}
+    <span class="info-value">
 
-                    </span>
+        ${employee.id}
+
+    </span>
+
+    <button
+
+        class="copy-btn"
+
+        onclick="copyEmployeeId('${employee.id}')">
+
+        📋
+
+    </button>
+
+</div>
 
                 </div>
 
@@ -280,25 +296,29 @@ async function searchEmployee() {
 
             <div class="empty-state">
 
-                <h3>
+    <h2>
 
-                    Employee Not Found
+        ❌
 
-                </h3>
+    </h2>
 
-                <p>
+    <h3>
 
-                    No employee exists with ID
+        Employee Not Found
 
-                    <strong>
+    </h3>
 
-                        ${employeeId}
+    <p>
 
-                    </strong>
+        No employee found with ID
 
-                </p>
+        <strong>${employeeId}</strong>
 
-            </div>
+    </p>
+
+</div>
+
+
 
         `;
 	    
@@ -358,3 +378,17 @@ async function loadEmployeeCount(){
 }
 
 loadEmployeeCount();
+
+function copyEmployeeId(id){
+
+    navigator.clipboard.writeText(id);
+
+    showToast(
+
+        "Employee ID Copied",
+
+        "success"
+
+    );
+
+}
