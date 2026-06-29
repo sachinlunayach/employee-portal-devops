@@ -1,38 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Employee Portal</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
 <div class="container">
 
-    <h1>Employee Portal -Version 15</h1>
+    <header>
 
-    <input
-        type="number"
-        id="employeeId"
-        placeholder="Enter Employee ID">
+        <h1>Employee Portal</h1>
 
-    <button id="searchBtn">
+        <p class="subtitle">
 
-        Search Employee
+            Production Ready Employee Management System
 
-    </button>
+        </p>
 
-    <div id="result">
+    </header>
 
-        No employee searched.
 
-    </div>
+    <section class="search-card">
+
+        <h2>Search Employee</h2>
+
+        <p class="description">
+
+            Search employee information using Employee ID.
+
+        </p>
+
+        <input
+            type="number"
+            id="employeeId"
+            placeholder="Enter Employee ID">
+
+        <button id="searchBtn">
+
+            Search Employee
+
+        </button>
+
+    </section>
+
+
+    <section id="result">
+
+        Search an employee to view details.
+
+    </section>
+
+
+    <section class="features">
+
+        <h2>System Features</h2>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <h3>Employee Search</h3>
+
+                <p>
+
+                    Retrieve employee information instantly using Employee ID.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>HR Dashboard</h3>
+
+                <p>
+
+                    Add, Update and Delete employee records.
+
+                </p>
+
+                <a href="hr.html" class="btn">
+
+                    Open Dashboard
+
+                </a>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>Monitoring</h3>
+
+                <p>
+
+                    Prometheus, Grafana and Exporters continuously monitor the infrastructure.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>CI/CD Pipeline</h3>
+
+                <p>
+
+                    Automatic deployment using GitHub Actions, Docker Compose and AWS.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="tech-stack">
+
+        <h2>Technology Stack</h2>
+
+        <div class="stack">
+
+            <span>Docker</span>
+
+            <span>Docker Compose</span>
+
+            <span>Python</span>
+
+            <span>Flask</span>
+
+            <span>PostgreSQL</span>
+
+            <span>Redis</span>
+
+            <span>Prometheus</span>
+
+            <span>Grafana</span>
+
+            <span>GitHub Actions</span>
+
+            <span>AWS EC2</span>
+
+            <span>S3</span>
+
+            <span>CloudFront</span>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+
+            Employee Portal • DevOps Project • Production Ready
+
+        </p>
+
+    </footer>
 
 </div>
 
 <script src="app.js"></script>
 
 </body>
+
 </html>
