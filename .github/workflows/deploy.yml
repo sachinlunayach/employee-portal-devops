@@ -1,21 +1,41 @@
-name: Employee Portal CI/CD
+name: Continuous Deployment
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows:
+      - Continuous Integration
+    types:
+      - completed
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-deployment
+  cancel-in-progress: false
 
 jobs:
+  deploy:
 
-  # =========================
-  # FRONTEND DEPLOY (S3)
-  # =========================
-  deploy-frontend:
+    if: github.event.workflow_run.conclusion == 'success'
+
     runs-on: ubuntu-latest
 
+    environment:
+      name: production
+
     steps:
+
+      ####################################################
+      # Checkout Repository
+      ####################################################
+
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      ####################################################
+      # Configure AWS Credentials
+      ####################################################
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -24,44 +44,111 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Deploy to S3
+      ####################################################
+      # Deploy Frontend to S3
+      ####################################################
+
+      - name: Deploy Frontend
         run: |
+          echo "Deploying Frontend..."
           aws s3 sync frontend/ s3://employee-portal-frontend-sachin --delete
+
+      ####################################################
+      # Invalidate CloudFront
+      ####################################################
 
       - name: Invalidate CloudFront Cache
         run: |
+          echo "Refreshing CloudFront..."
           aws cloudfront create-invalidation \
             --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"
 
-  # =========================
-  # BACKEND DEPLOY (EC2)
-  # =========================
-  deploy-backend:
-    runs-on: ubuntu-latest
-    needs: deploy-frontend   # frontend success ke baad backend deploy
+      ####################################################
+      # Deploy Backend
+      ####################################################
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Deploy Backend to EC2
+        uses: appleboy/ssh-action@v1.2.0
 
-      - name: Deploy Backend via SSH
-        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
+          script_stop: true
+
           script: |
+
+            set -e
+
+            echo "=================================="
+            echo "Employee Portal Deployment"
+            echo "=================================="
+
             cd /home/ubuntu/employee-portal-devops
 
-            echo "Pulling latest code..."
+            echo ""
+            echo "Current Commit"
+            git rev-parse --short HEAD
+
+            echo ""
+            echo "Fetching Latest Changes..."
+            git fetch origin
+
+            echo ""
+            echo "Pulling Latest Code..."
             git pull origin main
 
-            echo "Installing dependencies..."
-            pip3 install -r backend/requirements.txt
+            echo ""
+            echo "Building Docker Containers..."
+            docker compose up -d --build
 
-            echo "Restarting services..."
-            sudo systemctl restart gunicorn
-            sudo systemctl restart nginx
+            echo ""
+            echo "Removing Unused Docker Images..."
+            docker image prune -af
 
-            echo "Backend deployment completed"
+            echo ""
+            echo "Waiting for Containers..."
+            sleep 20
+
+            echo ""
+            echo "Container Status"
+            docker compose ps
+
+            echo ""
+            echo "Backend Health Check..."
+            curl --fail http://localhost:5001/health
+
+            echo ""
+            echo "Prometheus Health Check..."
+            curl --fail http://localhost:9090/-/healthy
+
+            echo ""
+            echo "Grafana Health Check..."
+            curl --fail http://localhost:3000/api/health
+
+            echo ""
+            echo "Docker Images"
+            docker images
+
+            echo ""
+            echo "Docker Disk Usage"
+            docker system df
+
+            echo ""
+            echo "Deployment Completed Successfully"
+
+      ####################################################
+      # Deployment Summary
+      ####################################################
+
+      - name: Deployment Summary
+
+        run: |
+
+          echo "Deployment Finished"
+
+          echo "Repository : ${{ github.repository }}"
+          echo "Branch     : ${{ github.ref_name }}"
+          echo "Commit     : ${{ github.sha }}"
+          echo "Actor      : ${{ github.actor }}"

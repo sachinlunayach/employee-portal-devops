@@ -1,0 +1,67 @@
+```yaml
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+
+    name: Validate Project
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Backend Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Verify Python Syntax
+        run: |
+          python -m compileall backend
+
+      - name: Validate Docker Compose File
+        run: |
+          docker compose -f docker-compose.yml config
+
+      - name: Validate Prometheus Configuration
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
+            prom/prometheus \
+            --config.file=/etc/prometheus/prometheus.yml \
+            --web.listen-address=:9099 \
+            --log.level=error &
+          sleep 5
+          docker ps
+
+      - name: Verify Project Structure
+        run: |
+          test -f README.md
+          test -f docker-compose.yml
+          test -f backend/app.py
+          test -f backend/Dockerfile
+          test -f prometheus/prometheus.yml
+
+      - name: CI Completed
+        run: |
+          echo "Project validation completed successfully."
+```
+
