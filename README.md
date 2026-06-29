@@ -2,366 +2,185 @@
 
 <p align="center">
 
-![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)
-
-![Flask](https://img.shields.io/badge/Flask-REST_API-black?style=for-the-badge&logo=flask)
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?style=for-the-badge&logo=postgresql)
-
-![Redis](https://img.shields.io/badge/Redis-Cache-red?style=for-the-badge&logo=redis)
-
-![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge&logo=docker)
-
-![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-E6522C?style=for-the-badge&logo=prometheus)
-
-![Grafana](https://img.shields.io/badge/Grafana-Dashboard-F46800?style=for-the-badge&logo=grafana)
-
-![AWS](https://img.shields.io/badge/AWS-EC2%20%7C%20CloudFront-FF9900?style=for-the-badge&logo=amazonaws)
-
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=for-the-badge&logo=githubactions)
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge\&logo=python)
+![Flask](https://img.shields.io/badge/Flask-REST%20API-black?style=for-the-badge\&logo=flask)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?style=for-the-badge\&logo=postgresql)
+![Redis](https://img.shields.io/badge/Redis-Cache-red?style=for-the-badge\&logo=redis)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge\&logo=docker)
+![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-E6522C?style=for-the-badge\&logo=prometheus)
+![Grafana](https://img.shields.io/badge/Grafana-Dashboard-F46800?style=for-the-badge\&logo=grafana)
+![AWS](https://img.shields.io/badge/AWS-EC2%20%7C%20CloudFront-FF9900?style=for-the-badge\&logo=amazonaws)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI/CD-2088FF?style=for-the-badge\&logo=githubactions)
 
 </p>
 
 ---
 
-# 📌 Project Overview
+# 📌 Overview
 
-Employee Portal DevOps Project is a **production-ready employee management system** developed using modern DevOps practices.
+The **Employee Portal DevOps Project** is a production-inspired employee management system that demonstrates modern DevOps practices from application development to deployment and monitoring.
 
-The application allows users to search employee records, while administrators can securely manage employee information through a dedicated HR Dashboard.
+The project consists of two web applications:
 
-The project demonstrates the complete software deployment lifecycle including:
+* 👤 **Employee Portal** – Search employee records by Employee ID.
+* 👨‍💼 **HR Dashboard** – Manage employee records using complete CRUD operations.
 
-- Modern Frontend Development
-- REST API Development
-- PostgreSQL Database Integration
-- Redis Caching
-- Docker Containerization
-- Docker Compose Orchestration
-- Prometheus Monitoring
-- Grafana Dashboards
-- Telegram Alerting
-- AWS EC2 Deployment
-- CloudFront CDN
-- GitHub Actions CI/CD Pipeline
-
-This project was built to simulate a real-world production environment and showcase practical DevOps skills.
+The backend is built using **Flask** with **PostgreSQL** as the primary database and **Redis** for caching. The application is containerized using **Docker Compose**, monitored with **Prometheus** and **Grafana**, deployed on **AWS EC2**, accelerated using **AWS CloudFront**, and integrated with **GitHub Actions** for Continuous Integration and Continuous Deployment (CI/CD).
 
 ---
 
-#  Project Features
+# ✨ Key Features
 
-## 👨 Employee Portal
-
-- Search Employee by Employee ID
-- Responsive Modern UI
-- Loading Animation
-- Toast Notifications
-- Search Reset Button
-- Keyboard Search (Enter Key)
-- Employee Information Card
-- Responsive Design
-
----
-
-## 👨‍💼 HR Dashboard
-
-- Search Employee
-- Add Employee
-- Update Employee
-- Delete Employee
-- Employee Statistics
-- Backend Health Status
-- PostgreSQL Status
-- Redis Status
-- Loading Overlay
-- Responsive Admin Dashboard
-
----
-
-##  Backend Features
-
-- RESTful Flask API
-- SQLAlchemy ORM
-- PostgreSQL Database
-- Redis Cache
-- Cache Invalidation
-- Health Check Endpoint
-- Prometheus Metrics
-- Error Handling
-- Production Ready Structure
-
----
-
-##  Monitoring Features
-
-- Prometheus Monitoring
-- Grafana Dashboards
-- Redis Exporter
-- PostgreSQL Exporter
-- Node Exporter
-- Alert Rules
-- Telegram Notifications
-
----
-
-## ☁ Cloud Infrastructure
-
-- AWS EC2
-- AWS CloudFront
-- Docker Compose
-- GitHub Actions CI/CD
-- Automated Deployment
-- Production Ready Architecture
+| Module             | Features                                                                           |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| 👤 Employee Portal | Search Employee, Responsive UI, Loading Spinner, Toast Notifications, Clear Search |
+| 👨‍💼 HR Dashboard | Search, Add, Update, Delete Employees, Backend Status, Employee Statistics         |
+| ⚙ Backend          | Flask REST API, PostgreSQL, SQLAlchemy ORM, Redis Cache                            |
+| 📊 Monitoring      | Prometheus, Grafana, Node Exporter, PostgreSQL Exporter, Redis Exporter            |
+| ☁ DevOps           | Docker, Docker Compose, AWS EC2, CloudFront, GitHub Actions                        |
 
 ---
 
 # 🛠 Technology Stack
 
-| Category | Technologies |
-|-----------|--------------|
-| Frontend | HTML5, CSS3, JavaScript |
-| Backend | Python, Flask |
-| Database | PostgreSQL |
-| Cache | Redis |
-| ORM | SQLAlchemy |
-| Monitoring | Prometheus, Grafana |
-| Exporters | Node Exporter, Redis Exporter, PostgreSQL Exporter |
-| Containerization | Docker, Docker Compose |
-| Cloud | AWS EC2, AWS CloudFront |
-| Automation | GitHub Actions |
-| Version Control | Git & GitHub |
+| Category         | Technologies                                       |
+| ---------------- | -------------------------------------------------- |
+| Frontend         | HTML5, CSS3, JavaScript                            |
+| Backend          | Python, Flask                                      |
+| Database         | PostgreSQL                                         |
+| ORM              | SQLAlchemy                                         |
+| Cache            | Redis                                              |
+| Monitoring       | Prometheus, Grafana                                |
+| Exporters        | Node Exporter, PostgreSQL Exporter, Redis Exporter |
+| Containerization | Docker, Docker Compose                             |
+| Cloud            | AWS EC2, AWS CloudFront                            |
+| CI/CD            | GitHub Actions                                     |
+| Version Control  | Git & GitHub                                       |
 
 ---
 
 # 🌐 Live Demo
 
-## Employee Portal
-
-https://djrsvxg7njjaz.cloudfront.net
-
----
-
-## HR Dashboard
-
-https://djrsvxg7njjaz.cloudfront.net/hr_dashboard.html
-
----
-
-## Backend Health
-
-https://djrsvxg7njjaz.cloudfront.net/health
-
----
-
-## Prometheus Metrics
-
-https://djrsvxg7njjaz.cloudfront.net/metrics
+| Service            | URL                                                    |
+| ------------------ | ------------------------------------------------------ |
+| Employee Portal    | https://djrsvxg7njjaz.cloudfront.net                   |
+| HR Dashboard       | https://djrsvxg7njjaz.cloudfront.net/hr_dashboard.html |
+| Backend Health     | https://djrsvxg7njjaz.cloudfront.net/health            |
+| Prometheus Metrics | https://djrsvxg7njjaz.cloudfront.net/metrics           |
 
 ---
 
 # 🏗 System Architecture
 
-The Employee Portal follows a production-style cloud architecture where the frontend and backend are separated for better scalability, security and performance.
-
 ```text
-                           ┌───────────────────────────┐
-                           │           User            │
-                           │     Browser / Client      │
-                           └─────────────┬─────────────┘
-                                         │
-                                         ▼
-                         ┌────────────────────────────────┐
-                         │         AWS CloudFront         │
-                         │            CDN Layer           │
-                         └─────────────┬──────────────────┘
-                                       │
-                 ┌─────────────────────┴─────────────────────┐
-                 │                                           │
-                 ▼                                           ▼
-      ┌───────────────────────┐                 ┌────────────────────────┐
-      │     Amazon S3         │                 │     Flask Backend      │
-      │   Static Frontend     │                 │      Running on EC2    │
-      │                       │                 │                        │
-      │ index.html            │                 │ REST API              │
-      │ hr_dashboard.html     │                 │ /employee             │
-      │ CSS / JavaScript      │                 │ /employees            │
-      └───────────────────────┘                 │ /health               │
-                                                │ /metrics              │
-                                                └───────────┬───────────┘
-                                                            │
-                                   ┌────────────────────────┼──────────────────────┐
-                                   ▼                        ▼                      ▼
-                         ┌──────────────────┐      ┌────────────────┐     ┌─────────────────┐
-                         │   PostgreSQL     │      │     Redis      │     │ Prometheus      │
-                         │ Employee Data    │      │ Cache Layer    │     │ Metrics         │
-                         └──────────────────┘      └────────────────┘     └─────────┬───────┘
-                                                                                     │
-                                                                                     ▼
-                                                                           ┌─────────────────┐
-                                                                           │    Grafana      │
-                                                                           │ Dashboards      │
-                                                                           └─────────┬───────┘
-                                                                                     │
-                                                                                     ▼
-                                                                           ┌─────────────────┐
-                                                                           │ Alertmanager    │
-                                                                           │ Telegram Alerts │
-                                                                           └─────────────────┘
+                           User
+                             │
+                             ▼
+                    AWS CloudFront CDN
+                             │
+           ┌─────────────────┴─────────────────┐
+           ▼                                   ▼
+    Amazon S3 Frontend                Flask Backend (EC2)
+                                              │
+                    ┌─────────────────────────┴─────────────────────────┐
+                    ▼                                                   ▼
+             PostgreSQL Database                                Redis Cache
+                    │                                                   │
+                    └──────────────────────┬────────────────────────────┘
+                                           ▼
+                                      Prometheus
+                                           │
+                                           ▼
+                                        Grafana
+                                           │
+                                           ▼
+                               Alertmanager → Telegram
 ```
-
----
-
-# ☁ AWS Infrastructure
-
-The application is deployed on Amazon Web Services using a production-style architecture.
-
-### Infrastructure Components
-
-- Amazon EC2 for backend application hosting
-- Amazon S3 for static frontend hosting
-- AWS CloudFront CDN for global content delivery
-- Docker Compose for multi-container deployment
-- GitHub Actions for Continuous Integration and Deployment
-
----
-
-# 🐳 Docker Architecture
-
-The complete application is containerized using Docker Compose.
-
-## Running Containers
-
-- Backend (Flask + Gunicorn)
-- PostgreSQL Database
-- Redis Cache
-- Prometheus
-- Grafana
-- Redis Exporter
-- PostgreSQL Exporter
-- Node Exporter
-
-Each service runs inside its own isolated Docker container and communicates over the Docker network.
 
 ---
 
 # 📂 Project Structure
 
 ```text
-employee-portal-devops
+employee-portal-devops/
 │
-├── backend
-│   ├── app.py
-│   ├── config.py
-│   ├── models.py
-│   ├── requirements.txt
-│   ├── Dockerfile
-│   └── scripts
-│
-├── frontend
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   ├── hr_dashboard.html
-│   ├── hr_dashboard.css
-│   └── hr_dashboard.js
-│
-├── monitoring
-│   ├── prometheus.yml
-│   ├── alert_rules.yml
-│   └── grafana
-│
-├── screenshots
-│   ├── Employee Portal
-│   ├── HR Dashboard
-│   ├── Grafana
-│   ├── Prometheus
-│   └── Telegram Alerts
-│
+├── backend/
+├── frontend/
+├── monitoring/
+├── screenshots/
 ├── docker-compose.yml
 ├── README.md
-└── .github
-    └── workflows
+└── .github/workflows/
 ```
 
 ---
 
-#  Request Flow
+# 🚀 Core Components
 
-1. User opens the Employee Portal through CloudFront.
-2. CloudFront serves static frontend files from Amazon S3.
-3. API requests are forwarded to the Flask backend running on EC2.
-4. The backend checks Redis for cached data.
-5. On a cache miss, data is retrieved from PostgreSQL.
-6. The response is cached in Redis for faster future requests.
-7. Prometheus continuously collects metrics from the backend and exporters.
-8. Grafana visualizes system health and performance.
-9. Alertmanager sends Telegram notifications when configured alert rules are triggered.
+## 👤 Employee Portal
 
----
+* Search employee by Employee ID
+* Responsive and modern UI
+* Loading animation
+* Toast notifications
+* Clear search option
+* Keyboard search support
 
-#  Production Highlights
+### Preview
 
-- Containerized Microservice Architecture
-- Redis-based API Caching
-- PostgreSQL Persistent Storage
-- CloudFront CDN Integration
-- Automated Health Monitoring
-- Real-time Metrics Collection
-- Telegram Alert Notifications
-- GitHub Actions CI/CD Pipeline
-- Production-ready Deployment
-
-# Installation Guide
-
-Follow the steps below to run the Employee Portal DevOps Project locally.
+![Employee Portal](screenshots/01-employee_portal_dashboard-1.png)
 
 ---
 
-#  Prerequisites
+## 👨‍💼 HR Dashboard
 
-Before starting, make sure the following software is installed.
+* Search employees
+* Add new employee
+* Update employee details
+* Delete employee
+* Live employee count
+* Backend health indicator
+* Responsive dashboard
 
-- Git
-- Docker
-- Docker Compose
-- Python 3.12+
-- PostgreSQL (Optional for local development)
-- Redis (Optional for local development)
+### Preview
+
+![HR Dashboard](screenshots/03-hr_portal_dashboard-1.png)
+
+---
+# ⚙️ Installation
+
+## 📋 Prerequisites
+
+Ensure the following software is installed before running the project.
+
+* Git
+* Docker
+* Docker Compose
+* Python 3.12+
+* AWS CLI (Optional)
 
 Verify installation:
 
 ```bash
 git --version
-
 docker --version
-
 docker compose version
-
 python3 --version
 ```
 
 ---
 
-#  Clone Repository
+## 📥 Clone Repository
 
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/employee-portal-devops.git
+git clone https://github.com/YOUR_USERNAME/employee-portal-devops.git
 
 cd employee-portal-devops
 ```
 
 ---
 
-# 📂 Project Structure
-
-```bash
-employee-portal-devops/
-```
-
----
-
-# 🐳 Build Docker Images
+## 🐳 Build Docker Images
 
 ```bash
 docker compose build
@@ -369,13 +188,13 @@ docker compose build
 
 ---
 
-#  Start All Containers
+## 🚀 Start All Services
 
 ```bash
 docker compose up -d
 ```
 
-Check running containers
+Verify running containers
 
 ```bash
 docker compose ps
@@ -383,23 +202,15 @@ docker compose ps
 
 ---
 
-# 🛑 Stop Containers
+## 📜 View Logs
 
 ```bash
-docker compose stop
+docker compose logs -f backend
 ```
 
 ---
 
-# 🔄 Restart Containers
-
-```bash
-docker compose restart
-```
-
----
-
-# ❌ Remove Containers
+## 🛑 Stop Services
 
 ```bash
 docker compose down
@@ -407,1246 +218,362 @@ docker compose down
 
 ---
 
-#  Remove Containers + Volumes
+# 🌐 Local URLs
 
-```bash
-docker compose down -v
-```
-
----
-
-#  View Logs
-
-Backend
-
-```bash
-docker compose logs backend
-```
-
-Live Logs
-
-```bash
-docker compose logs -f backend
-```
-
-All Containers
-
-```bash
-docker compose logs
-```
+| Service         | URL                                |
+| --------------- | ---------------------------------- |
+| Employee Portal | http://localhost                   |
+| HR Dashboard    | http://localhost/hr_dashboard.html |
+| Backend         | http://localhost:5001              |
+| Health          | http://localhost:5001/health       |
+| Metrics         | http://localhost:5001/metrics      |
+| Prometheus      | http://localhost:9090              |
+| Grafana         | http://localhost:3000              |
 
 ---
 
-# 🌐 Access Application
+# 📡 REST API
 
-## Employee Portal
-
-```
-http://localhost
-```
-
-or
-
-```
-https://djrsvxg7njjaz.cloudfront.net
-```
+| Method | Endpoint            | Description              |
+| ------ | ------------------- | ------------------------ |
+| GET    | `/employee?id={id}` | Get employee by ID       |
+| GET    | `/employees`        | Get all employees        |
+| POST   | `/employee`         | Add new employee         |
+| PUT    | `/employee/{id}`    | Update employee          |
+| DELETE | `/employee/{id}`    | Delete employee          |
+| GET    | `/health`           | Application health check |
+| GET    | `/metrics`          | Prometheus metrics       |
 
 ---
 
-## HR Dashboard
+## Example Request
 
-```
-http://localhost/hr_dashboard.html
-```
-
-or
-
-```
-https://djrsvxg7njjaz.cloudfront.net/hr_dashboard.html
-```
-
----
-
-## Backend API
-
-```
-http://localhost:5001
-```
-
----
-
-## Health Endpoint
-
-```
-http://localhost:5001/health
-```
-
----
-
-## Metrics Endpoint
-
-```
-http://localhost:5001/metrics
-```
-
----
-
-#  Environment Variables
-
-Example configuration
-
-```env
-POSTGRES_DB=employee_db
-
-POSTGRES_USER=postgres
-
-POSTGRES_PASSWORD=postgres
-
-POSTGRES_HOST=postgres
-
-POSTGRES_PORT=5432
-
-REDIS_HOST=redis
-
-REDIS_PORT=6379
-
-FLASK_ENV=production
-```
-
----
-
-#  Docker Services
-
-The application consists of the following containers.
-
-| Container | Purpose |
-|------------|---------|
-| backend | Flask REST API |
-| postgres | PostgreSQL Database |
-| redis | Redis Cache |
-| prometheus | Metrics Collection |
-| grafana | Monitoring Dashboard |
-| redis-exporter | Redis Metrics |
-| postgres-exporter | PostgreSQL Metrics |
-| node-exporter | EC2 Metrics |
-
----
-
-# 🔌 REST API Endpoints
-
-## Home
-
-```http
-GET /
-```
-
-Returns application status.
-
----
-
-## Health Check
-
-```http
-GET /health
-```
-
-Checks PostgreSQL and Redis connectivity.
-
----
-
-## Prometheus Metrics
-
-```http
-GET /metrics
-```
-
-Returns Prometheus metrics.
-
----
-
-## Get Employee
+### Get Employee
 
 ```http
 GET /employee?id=101
 ```
 
----
-
-## Get All Employees
-
-```http
-GET /employees
-```
-
----
-
-## Add Employee
-
-```http
-POST /employee
-```
-
-Request
+### Add Employee
 
 ```json
 {
-  "id": 106,
-  "name": "John",
-  "role": "DevOps Engineer",
-  "salary": "₹1,20,000"
+    "id":106,
+    "name":"John",
+    "role":"DevOps Engineer",
+    "salary":"₹1,20,000"
+}
+```
+
+### Update Employee
+
+```json
+{
+    "name":"John Doe",
+    "role":"Senior DevOps Engineer",
+    "salary":"₹1,50,000"
 }
 ```
 
 ---
 
-## Update Employee
+# 📊 Monitoring Stack
 
-```http
-PUT /employee/106
-```
+The project uses Prometheus and Grafana to monitor application health and infrastructure.
 
-Request
+### Monitoring Components
 
-```json
-{
-  "name": "John Doe",
-  "role": "Senior DevOps Engineer",
-  "salary": "₹1,50,000"
-}
-```
-
----
-
-## Delete Employee
-
-```http
-DELETE /employee/106
-```
+| Tool                | Purpose                    |
+| ------------------- | -------------------------- |
+| Prometheus          | Metrics Collection         |
+| Grafana             | Dashboards & Visualization |
+| Alertmanager        | Alert Processing           |
+| Node Exporter       | EC2 Metrics                |
+| Redis Exporter      | Redis Metrics              |
+| PostgreSQL Exporter | Database Metrics           |
+| Telegram            | Alert Notifications        |
 
 ---
 
-#  Verify Backend
+# 📈 Custom Metrics
 
-Health Check
+The backend exposes several custom Prometheus metrics.
 
-```bash
-curl http://localhost:5001/health
-```
-
-Employee List
-
-```bash
-curl http://localhost:5001/employees
-```
-
-Metrics
-
-```bash
-curl http://localhost:5001/metrics
-```
+| Metric                            | Description                |
+| --------------------------------- | -------------------------- |
+| employee_requests_total           | Employee search requests   |
+| employee_request_duration_seconds | API response time          |
+| employee_created_total            | Employees created          |
+| employee_updated_total            | Employees updated          |
+| employee_deleted_total            | Employees deleted          |
+| employee_cache_hits_total         | Redis cache hits           |
+| employee_cache_miss_total         | Redis cache misses         |
+| employee_list_requests_total      | Employee list requests     |
+| employee_list_cache_hits_total    | Employee list cache hits   |
+| employee_list_cache_miss_total    | Employee list cache misses |
 
 ---
-
-# 📊 Verify Monitoring
-
-Prometheus
-
-```
-http://localhost:9090
-```
-
-Grafana
-
-```
-http://localhost:3000
-```
-
-Node Exporter
-
-```
-http://localhost:9100
-```
-
-Redis Exporter
-
-```
-http://localhost:9121
-```
-
-PostgreSQL Exporter
-
-```
-http://localhost:9187
-```
-
----
-
-#  Basic Functional Testing
-
-- ✅ Search employee by ID
-- ✅ Add a new employee
-- ✅ Update employee details
-- ✅ Delete employee
-- ✅ Verify Redis cache hit/miss
-- ✅ Verify Prometheus metrics
-- ✅ Verify Grafana dashboards
-- ✅ Verify backend health endpoint
-
-#  Monitoring & Observability
-
-A complete monitoring stack has been integrated into the project to provide real-time visibility into application performance, infrastructure health and system resources.
-
-The monitoring solution is powered by **Prometheus**, **Grafana**, multiple **Exporters**, and **Alertmanager** with **Telegram notifications**.
-
----
-
-#  Monitoring Stack
-
-| Component | Purpose |
-|-----------|---------|
-| Prometheus | Metrics Collection |
-| Grafana | Dashboard Visualization |
-| Alertmanager | Alert Processing |
-| Telegram | Alert Notifications |
-| Node Exporter | EC2 System Metrics |
-| PostgreSQL Exporter | Database Metrics |
-| Redis Exporter | Redis Metrics |
-
----
-
-#  Grafana Dashboards
-
-The project contains multiple Grafana dashboards to monitor different parts of the infrastructure.
-
-## Dashboard Overview
-
-- Employee Portal Performance
-- Backend API Health
-- PostgreSQL Metrics
-- Redis Metrics
-- CPU Usage
-- Memory Usage
-- Disk Usage
-- Network Traffic
-- Container Status
-
----
-
-#  Backend Metrics
-
-Custom Prometheus metrics are exposed through:
-
-```
-GET /metrics
-```
-
-The following metrics are collected.
-
-## Employee API Metrics
-
-```
-employee_requests_total
-```
-
-Total employee search requests.
-
----
-
-```
-employee_request_duration_seconds
-```
-
-Measures API response time.
-
----
-
-```
-employee_created_total
-```
-
-Total employees created.
-
----
-
-```
-employee_updated_total
-```
-
-Total employee updates.
-
----
-
-```
-employee_deleted_total
-```
-
-Total deleted employees.
-
----
-
-#  Redis Metrics
-
-```
-employee_cache_hits_total
-```
-
-Number of successful Redis cache hits.
-
----
-
-```
-employee_cache_miss_total
-```
-
-Number of Redis cache misses.
-
----
-
-```
-employee_list_cache_hits_total
-```
-
-Employee list cache hits.
-
----
-
-```
-employee_list_cache_miss_total
-```
-
-Employee list cache misses.
-
----
-
-#  Employee List Metrics
-
-```
-employee_list_requests_total
-```
-
-Tracks total employee list requests.
-
----
-
-#  PostgreSQL Monitoring
-
-PostgreSQL Exporter collects metrics such as
-
-- Database Connections
-- Transactions
-- Query Statistics
-- Database Size
-- Locks
-- Cache Usage
-- Active Sessions
-
----
-
-#  Redis Monitoring
-
-Redis Exporter monitors
-
-- Connected Clients
-- Memory Usage
-- Cache Hits
-- Cache Misses
-- Commands Processed
-- Keys Stored
-- Redis Uptime
-
----
-
-# 🖥 Node Exporter Metrics
-
-Node Exporter provides
-
-- CPU Usage
-- Memory Usage
-- Disk Space
-- Disk I/O
-- Network Traffic
-- System Load
-- Filesystem Usage
-- Host Uptime
-
----
-
-#  Alerting System
-
-The project includes automated alerting using Alertmanager.
-
-Alerts are triggered when predefined thresholds are crossed.
-
-Current alert rules include
-
-- Backend Down
-- PostgreSQL Down
-- Redis Down
-- High CPU Usage
-- High Memory Usage
-
----
-
-#  Telegram Notifications
-
-Whenever an alert is triggered, Alertmanager automatically sends a Telegram notification.
-
-Example alerts
-
-- Backend Down
-- PostgreSQL Down
-- Redis Down
-- High CPU Usage
-- High Memory Usage
-
-This enables real-time monitoring without continuously watching the Grafana dashboard.
-
----
-
-#  Health Endpoint
-
-The backend exposes a production-ready health endpoint.
-
-```
-GET /health
-```
-
-The endpoint verifies
-
-- Flask Backend
-- PostgreSQL Connection
-- Redis Connectivity
-
-Example Response
-
-```json
-{
-  "status":"healthy",
-  "database":"connected",
-  "redis":"connected",
-  "service":"employee-backend"
-}
-```
-
----
-
-#  Prometheus Targets
-
-Prometheus continuously scrapes metrics from
-
-- Flask Backend
-- Node Exporter
-- PostgreSQL Exporter
-- Redis Exporter
-
-All configured targets remain visible from the Prometheus Targets page.
-
----
-
-#  Monitoring Workflow
-
-```
-Flask Backend
-       │
-       ▼
-Prometheus Scrapes Metrics
-       │
-       ▼
-Grafana Dashboards
-       │
-       ▼
-Alert Rules
-       │
-       ▼
-Alertmanager
-       │
-       ▼
-Telegram Notification
-```
-
----
-
-#  Monitoring Highlights
-
-- Production-ready Monitoring Stack
-- Custom Flask Metrics
-- PostgreSQL Monitoring
-- Redis Monitoring
-- EC2 Infrastructure Monitoring
-- Real-time Dashboards
-- Automated Alert Rules
-- Telegram Notifications
-- Health Endpoint
-- Performance Metrics
-- API Latency Monitoring
-- Cache Performance Monitoring
 
 # 📸 Project Screenshots
 
-The following screenshots demonstrate different components of the Employee Portal DevOps Project.
+## 👤 Employee Portal
+
+![Employee Portal](screenshots/01-employee_portal_dashboard-1.png)
+
+![Employee Search](screenshots/02-employee_portal_dashboard-2.png)
 
 ---
 
-# 👨 Employee Portal
+## 👨‍💼 HR Dashboard
 
-Modern employee search interface with responsive UI, toast notifications and loading animations.
+![HR Dashboard](screenshots/03-hr_portal_dashboard-1.png)
 
-## Dashboard
-
-<p align="center">
-
-<img src="screenshots/01-employee_portal_dashboard-1.png" width="900">
-
-</p>
+![Employee Management](screenshots/04-hr_portal_dashboard-2.png)
 
 ---
 
-## Employee Search
+## 📊 Monitoring Dashboards
 
-<p align="center">
+![Monitoring Dashboard](screenshots/05-system-monitoring-dashboard-1.png)
 
-<img src="screenshots/02-employee_portal_dashboard-2.png" width="900">
+![Infrastructure Dashboard](screenshots/06-system-monitoring-dashboard-2.png)
 
-</p>
+![Grafana Overview](screenshots/08-grafana-overview-dashboard.png)
 
----
-
-# 👨‍💼 HR Dashboard
-
-Production-ready administrator dashboard for managing employee records.
-
-Features include:
-
-- Search Employee
-- Add Employee
-- Update Employee
-- Delete Employee
-- Backend Health Status
-- Employee Statistics
-- Responsive Design
+![Prometheus Targets](screenshots/12-prometheus-targets.png)
 
 ---
 
-## HR Dashboard
+## 🚨 Alert Rules
 
-<p align="center">
-
-<img src="screenshots/03-hr_portal_dashboard-1.png" width="900">
-
-</p>
-
----
-
-## Employee Management
-
-<p align="center">
-
-<img src="screenshots/04-hr_portal_dashboard-2.png" width="900">
-
-</p>
+| Alert           | Screenshot                                         |
+| --------------- | -------------------------------------------------- |
+| Backend Down    | ![](screenshots/07-alert-rule-backend-down.png)    |
+| PostgreSQL Down | ![](screenshots/09-alert-rule-postgresql-down.png) |
+| High Memory     | ![](screenshots/10-alert-rule-high-memory.png)     |
+| Redis Down      | ![](screenshots/11-alert-rule-redis-down.png)      |
+| High CPU        | ![](screenshots/17-alert-rule-high-cpu.png)        |
 
 ---
 
-#  System Monitoring
+## 📱 Telegram Notifications
 
-Real-time infrastructure monitoring using Prometheus and Grafana.
+| Notification    | Screenshot                                             |
+| --------------- | ------------------------------------------------------ |
+| High CPU        | ![](screenshots/13-telegram-high-cpu-alert.png)        |
+| High Memory     | ![](screenshots/14-telegram-high-memory-alert.png)     |
+| PostgreSQL Down | ![](screenshots/15-telegram-postgresql-down-alert.png) |
+| Redis Down      | ![](screenshots/16-telegram-redis-down-alert.png)      |
+
+---
+# 🚀 Deployment
+
+The application is deployed using a modern DevOps workflow that combines containerization, cloud infrastructure, monitoring, and automation.
+
+## ☁ AWS Infrastructure
+
+| Service         | Purpose                                            |
+| --------------- | -------------------------------------------------- |
+| Amazon EC2      | Hosts the Flask backend and Docker containers      |
+| Amazon S3       | Stores static frontend files                       |
+| AWS CloudFront  | Delivers frontend globally and routes API requests |
+| Security Groups | Controls inbound and outbound traffic              |
 
 ---
 
-## Monitoring Dashboard
-
-<p align="center">
-
-<img src="screenshots/05-system-monitoring-dashboard-1.png" width="900">
-
-</p>
-
----
-
-## Infrastructure Dashboard
-
-<p align="center">
-
-<img src="screenshots/06-system-monitoring-dashboard-2.png" width="900">
-
-</p>
-
----
-
-#  Grafana Dashboard
-
-Complete visualization of infrastructure, backend, Redis and PostgreSQL metrics.
-
-<p align="center">
-
-<img src="screenshots/08-grafana-overview-dashboard.png" width="900">
-
-</p>
-
----
-
-#  Prometheus Targets
-
-Prometheus continuously scrapes metrics from all configured services.
-
-<p align="center">
-
-<img src="screenshots/12-prometheus-targets.png" width="900">
-
-</p>
-
----
-
-#  Alert Rules
-
-The project includes production-ready alert rules for multiple services.
-
----
-
-## Backend Down Alert
-
-<p align="center">
-
-<img src="screenshots/07-alert-rule-backend-down.png" width="900">
-
-</p>
-
----
-
-## PostgreSQL Down Alert
-
-<p align="center">
-
-<img src="screenshots/09-alert-rule-postgresql-down.png" width="900">
-
-</p>
-
----
-
-## High Memory Alert
-
-<p align="center">
-
-<img src="screenshots/10-alert-rule-high-memory.png" width="900">
-
-</p>
-
----
-
-## Redis Down Alert
-
-<p align="center">
-
-<img src="screenshots/11-alert-rule-redis-down.png" width="900">
-
-</p>
-
----
-
-## High CPU Alert
-
-<p align="center">
-
-<img src="screenshots/17-alert-rule-high-cpu.png" width="900">
-
-</p>
-
----
-
-#  Telegram Alert Notifications
-
-Alertmanager automatically sends Telegram notifications whenever alert conditions are met.
-
----
-
-## High CPU Notification
-
-<p align="center">
-
-<img src="screenshots/13-telegram-high-cpu-alert.png" width="700">
-
-</p>
-
----
-
-## High Memory Notification
-
-<p align="center">
-
-<img src="screenshots/14-telegram-high-memory-alert.png" width="700">
-
-</p>
-
----
-
-## PostgreSQL Down Notification
-
-<p align="center">
-
-<img src="screenshots/15-telegram-postgresql-down-alert.png" width="700">
-
-</p>
-
----
-
-## Redis Down Notification
-
-<p align="center">
-
-<img src="screenshots/16-telegram-redis-down-alert.png" width="700">
-
-</p>
-
----
-
-#  Complete Monitoring Workflow
-
-```text
-Application
-
-        │
-
-        ▼
-
-Flask Backend
-
-        │
-
-        ▼
-
-Prometheus
-
-        │
-
-        ▼
-
-Grafana Dashboard
-
-        │
-
-        ▼
-
-Alert Rules
-
-        │
-
-        ▼
-
-Alertmanager
-
-        │
-
-        ▼
-
-Telegram Notifications
-```
-
----
-
-# 📌 Key Highlights
-
-- Modern Employee Portal
-- Professional HR Dashboard
-- Redis Caching
-- PostgreSQL Database
-- Dockerized Architecture
-- AWS EC2 Deployment
-- CloudFront CDN
-- Prometheus Monitoring
-- Grafana Dashboards
-- Telegram Alerting
-- Production Ready Infrastructure
-- Fully Responsive UI
-
-#  Deployment & CI/CD
-
-The project is deployed using a modern DevOps workflow with Docker, AWS, CloudFront and GitHub Actions.
-
-The deployment pipeline automates code integration while keeping the application containerized and production-ready.
+## 🐳 Docker Services
+
+The project is fully containerized using **Docker Compose**.
+
+| Container           | Purpose                   |
+| ------------------- | ------------------------- |
+| Backend             | Flask REST API (Gunicorn) |
+| PostgreSQL          | Primary Database          |
+| Redis               | Caching Layer             |
+| Prometheus          | Metrics Collection        |
+| Grafana             | Monitoring Dashboard      |
+| Node Exporter       | EC2 Metrics               |
+| Redis Exporter      | Redis Metrics             |
+| PostgreSQL Exporter | Database Metrics          |
 
 ---
 
 # 🔄 CI/CD Pipeline
 
-The project uses **GitHub Actions** to automate the deployment workflow.
+The repository uses **GitHub Actions** for Continuous Integration and Continuous Deployment.
 
 ## Workflow
 
 ```text
 Developer
-      │
-      ▼
+     │
+     ▼
 Git Commit
-      │
-      ▼
+     │
+     ▼
 GitHub Repository
-      │
-      ▼
+     │
+     ▼
 GitHub Actions
-      │
-      ▼
+     │
+     ▼
 Build Docker Images
-      │
-      ▼
-Run Validation Checks
-      │
-      ▼
+     │
+     ▼
 Deploy to AWS EC2
-      │
-      ▼
-Application Running
+     │
+     ▼
+Docker Compose Restart
+     │
+     ▼
+Production Deployment
 ```
 
 ---
 
-# ⚙ GitHub Actions
+# 🧪 Verification Checklist
 
-GitHub Actions automatically performs:
+### Frontend
 
-- Source Code Checkout
-- Docker Image Build
-- Docker Compose Validation
-- Container Deployment
-- Health Verification
-- Production Deployment
+* ✅ Employee Search
+* ✅ HR Dashboard
+* ✅ Responsive UI
+* ✅ Loading Animation
+* ✅ Toast Notifications
 
----
+### Backend
 
-# 🐳 Docker Deployment
+* ✅ Search Employee
+* ✅ Get All Employees
+* ✅ Add Employee
+* ✅ Update Employee
+* ✅ Delete Employee
+* ✅ Redis Cache
+* ✅ Health Endpoint
+* ✅ Metrics Endpoint
 
-The complete application is deployed using Docker Compose.
+### Monitoring
 
-Containers included in the deployment
+* ✅ Prometheus
+* ✅ Grafana
+* ✅ Alertmanager
+* ✅ Telegram Alerts
+* ✅ Redis Monitoring
+* ✅ PostgreSQL Monitoring
 
-- Backend (Flask + Gunicorn)
-- PostgreSQL
-- Redis
-- Prometheus
-- Grafana
-- Redis Exporter
-- PostgreSQL Exporter
-- Node Exporter
+### Infrastructure
 
-Docker Compose enables all services to communicate over a dedicated Docker network.
-
----
-
-# ☁ AWS Deployment
-
-The application is hosted on Amazon Web Services.
-
-Infrastructure includes
-
-- Amazon EC2
-- Amazon S3
-- AWS CloudFront
-
-CloudFront delivers static frontend assets globally while forwarding API requests to the backend.
+* ✅ Docker Compose
+* ✅ AWS EC2
+* ✅ CloudFront
+* ✅ GitHub Actions
 
 ---
 
-# 🌐 Deployment Architecture
+# 🎯 Skills Demonstrated
 
-```text
-                User
-                  │
-                  ▼
-        AWS CloudFront CDN
-          │             │
-          ▼             ▼
-   Amazon S3        AWS EC2
-  Static Frontend   Flask Backend
-                        │
-          ┌─────────────┴─────────────┐
-          ▼                           ▼
-   PostgreSQL Database          Redis Cache
-```
-
----
-
-#  Production Features
-
-The deployment includes several production-ready practices.
-
-- Dockerized Services
-- Health Check Endpoint
-- Redis Caching
-- API Performance Metrics
-- CloudFront CDN
-- Monitoring Stack
-- Automated Alerting
-- Container Isolation
-- Service Discovery using Docker Network
-
----
-
-#  Performance Optimizations
-
-The application has been optimized for better performance.
-
-## Redis Caching
-
-Frequently accessed employee records are cached for faster retrieval.
-
-Benefits
-
-- Reduced Database Queries
-- Faster API Responses
-- Lower Server Load
-- Better Scalability
-
----
-
-## CloudFront CDN
-
-Static frontend assets are delivered through AWS CloudFront.
-
-Benefits
-
-- Faster Page Loading
-- Lower Latency
-- Global Content Delivery
-- Improved User Experience
-
----
-
-## Docker
-
-Containerization provides
-
-- Consistent Environment
-- Easy Deployment
-- Service Isolation
-- Better Scalability
-
----
-
-#  Reliability Features
-
-The application includes multiple mechanisms to improve reliability.
-
-- Health Check Endpoint
-- Prometheus Metrics
-- Grafana Dashboards
-- Alert Rules
-- Telegram Notifications
-- Redis Cache Invalidation
-
----
-
-#  Testing Checklist
-
-The following functionality has been verified.
-
-## Frontend
-
-- Employee Search
-- Responsive Design
-- Loading Animation
-- Toast Notifications
-- HR Dashboard
-- CRUD Operations
-
----
+This project demonstrates practical knowledge of:
 
 ## Backend
 
-- Employee Search API
-- Employee List API
-- Add Employee API
-- Update Employee API
-- Delete Employee API
-- Health Endpoint
-- Metrics Endpoint
+* Flask REST API
+* SQLAlchemy ORM
+* PostgreSQL
+* Redis
+* CRUD Operations
+* API Design
+* Health Checks
 
 ---
 
-## Monitoring
+## Frontend
 
-- Prometheus Targets
-- Grafana Dashboards
-- Redis Metrics
-- PostgreSQL Metrics
-- Node Metrics
-- Alert Rules
-- Telegram Alerts
-
----
-
-## Infrastructure
-
-- Docker Containers
-- Docker Compose
-- AWS EC2
-- AWS CloudFront
-- GitHub Actions
-
----
-
-#  Project Highlights
-
-✔ Production-ready Employee Management System
-
-✔ RESTful Flask API
-
-✔ PostgreSQL Database
-
-✔ Redis Caching
-
-✔ Docker Containerization
-
-✔ Docker Compose Orchestration
-
-✔ Prometheus Monitoring
-
-✔ Grafana Dashboards
-
-✔ Telegram Alerting
-
-✔ AWS EC2 Deployment
-
-✔ CloudFront CDN
-
-✔ GitHub Actions CI/CD
-
-✔ Responsive Employee Portal
-
-✔ Modern HR Dashboard
-
-✔ Real-time Monitoring
-
-✔ Health Check Endpoint
-
-✔ Custom Prometheus Metrics
-
-✔ Enterprise-inspired Architecture
-
-#  Skills Demonstrated
-
-This project demonstrates practical implementation of multiple Software Development and DevOps concepts.
-
-## Backend Development
-
-- REST API Development
-- Flask Framework
-- SQLAlchemy ORM
-- CRUD Operations
-- Error Handling
-- Health Check APIs
-- Prometheus Metrics Integration
-
----
-
-## Database
-
-- PostgreSQL
-- Database Design
-- SQL Queries
-- Database Connectivity
-- Persistent Storage
-
----
-
-## Caching
-
-- Redis
-- Cache Hit / Miss
-- Cache Invalidation
-- Performance Optimization
-
----
-
-## Frontend Development
-
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- Responsive Design
-- Modern UI/UX
-- Toast Notifications
-- Loading Animations
+* HTML5
+* CSS3
+* JavaScript
+* Responsive UI
+* DOM Manipulation
+* Async Fetch API
 
 ---
 
 ## DevOps
 
-- Docker
-- Docker Compose
-- AWS EC2
-- AWS CloudFront
-- GitHub Actions
-- CI/CD Pipeline
+* Docker
+* Docker Compose
+* AWS EC2
+* AWS CloudFront
+* GitHub Actions
+* CI/CD
+* Linux
+* Nginx (if applicable)
 
 ---
 
-## Monitoring & Observability
+## Monitoring
 
-- Prometheus
-- Grafana
-- Alertmanager
-- Telegram Alerts
-- Node Exporter
-- Redis Exporter
-- PostgreSQL Exporter
-
----
-
-# 📚 Learning Outcomes
-
-This project helped me gain practical experience in:
-
-- Building production-ready REST APIs
-- Designing scalable application architecture
-- Implementing Redis caching strategies
-- Monitoring applications using Prometheus & Grafana
-- Deploying containerized applications with Docker
-- Automating deployments using GitHub Actions
-- Managing cloud infrastructure on AWS
-- Implementing health checks and observability
-- Designing responsive user interfaces
-- Understanding real-world DevOps workflows
+* Prometheus
+* Grafana
+* Alertmanager
+* Exporters
+* Custom Metrics
+* Telegram Integration
 
 ---
 
-#  Future Improvements
+# 📚 What I Learned
+
+During this project I gained hands-on experience in:
+
+* Designing REST APIs
+* Building containerized applications
+* Database management with PostgreSQL
+* Implementing Redis caching
+* Writing Prometheus metrics
+* Creating Grafana dashboards
+* Configuring alert rules
+* Sending Telegram alerts
+* Deploying applications on AWS
+* Setting up CI/CD pipelines with GitHub Actions
+* Managing production-style infrastructure
+
+---
+
+# 🚀 Future Improvements
 
 Planned enhancements include:
 
-- JWT Authentication
-- Role-Based Access Control (RBAC)
-- Employee Profile Photos
-- File Upload Support
-- Pagination
-- Search by Name and Role
-- Export Employee Data (CSV / Excel)
-- Audit Logs
-- Email Notifications
-- Kubernetes Deployment
-- Terraform Infrastructure
-- HTTPS with Custom Domain
-- Grafana Alert Enhancements
+* JWT Authentication
+* Role-Based Access Control (RBAC)
+* Search by Name & Role
+* Employee Profile Photos
+* CSV / Excel Export
+* Pagination
+* Audit Logs
+* Email Notifications
+* Kubernetes Deployment
+* Terraform Infrastructure
+* HTTPS with Custom Domain
+* Automated Backup Strategy
 
 ---
 
-# 📈 Project Summary
+# 🏆 Project Highlights
 
-| Category | Status |
-|----------|--------|
-| Employee Portal | ✅ Completed |
-| HR Dashboard | ✅ Completed |
-| Flask REST API | ✅ Completed |
-| PostgreSQL | ✅ Completed |
-| Redis Cache | ✅ Completed |
-| Docker | ✅ Completed |
-| Docker Compose | ✅ Completed |
-| AWS EC2 | ✅ Completed |
-| CloudFront | ✅ Completed |
-| GitHub Actions | ✅ Completed |
-| Prometheus | ✅ Completed |
-| Grafana | ✅ Completed |
-| Telegram Alerts | ✅ Completed |
-| Responsive UI | ✅ Completed |
-| Health Monitoring | ✅ Completed |
+* 🚀 Production-inspired Architecture
+* 🐳 Dockerized Application
+* ☁ AWS Deployment
+* ⚡ Redis Caching
+* 📊 Prometheus Monitoring
+* 📈 Grafana Dashboards
+* 📱 Telegram Alerting
+* 🔄 GitHub Actions CI/CD
+* 👨‍💼 Modern HR Dashboard
+* 👤 Responsive Employee Portal
+* 📡 RESTful API
+* 💾 PostgreSQL Database
+* ❤️ Health Monitoring
+* 📈 Custom Prometheus Metrics
 
 ---
 
@@ -1654,25 +581,25 @@ Planned enhancements include:
 
 **Sachin Choudhary**
 
-Computer Science Engineering (Artificial Intelligence)
+B.Tech – Computer Science Engineering (Artificial Intelligence)
 
-Passionate about:
+**Interests**
 
-- DevOps
-- Cloud Computing
-- Backend Development
-- Python
-- Docker
-- AWS
-- Monitoring & Observability
+* DevOps
+* Cloud Computing
+* Backend Development
+* Python
+* AWS
+* Docker
+* Monitoring & Observability
 
 ---
 
-#  Contributing
+# 🤝 Contributing
 
 Contributions, suggestions and improvements are welcome.
 
-If you find any issues or have ideas for improvement, feel free to open an issue or submit a pull request.
+If you have ideas for improving this project, feel free to open an Issue or submit a Pull Request.
 
 ---
 
@@ -1680,26 +607,25 @@ If you find any issues or have ideas for improvement, feel free to open an issue
 
 This project is licensed under the **MIT License**.
 
-You are free to use, modify and distribute this project according to the terms of the license.
+---
+
+# ⭐ Support
+
+If you found this project useful:
+
+* ⭐ Star this repository
+* 🍴 Fork the repository
+* 🐛 Report issues
+* 💡 Suggest improvements
+
+Your support is appreciated!
 
 ---
 
----
+<p align="center">
 
-#  Acknowledgements
+## 🎉 Thank You for Visiting!
 
-Special thanks to the open-source community and the creators of:
+If you enjoyed this project, don't forget to leave a ⭐ on GitHub.
 
-- Flask
-- PostgreSQL
-- Redis
-- Docker
-- Prometheus
-- Grafana
-- GitHub Actions
-- AWS
-
-for providing amazing tools that made this project possible.
-
----
-
+</p>
