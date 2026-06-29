@@ -5,176 +5,356 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Employee Portal</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
 
 </head>
 
 <body>
 
-<div class="container">
+    <!-- ===========================
+         Navigation
+    ============================ -->
 
-    <header>
+    <nav class="navbar">
 
-        <h1>Employee Portal</h1>
+        <div class="logo">
 
-        <p class="subtitle">
+            👨‍💼 Employee Portal
 
-            Production Ready Employee Management System
+        </div>
+
+        <div class="nav-links">
+
+            <a
+                href="hr.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="dashboard-btn">
+
+                HR Dashboard →
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- ===========================
+         Hero
+    ============================ -->
+
+    <section class="hero">
+
+        <h1>
+
+            Employee Management Portal
+
+        </h1>
+
+        <p>
+
+            Production Ready Employee Management System powered by Flask,
+            PostgreSQL, Redis, Prometheus & Docker.
 
         </p>
 
-    </header>
+    </section>
 
+    <!-- ===========================
+     Quick Stats
+=========================== -->
 
-    <section class="search-card">
+<section class="stats">
 
-        <h2>Search Employee</h2>
+    <div class="stat-card">
 
-        <p class="description">
+        <h2 id="employeeCount">
 
-            Search employee information using Employee ID.
+            --
+
+        </h2>
+
+        <p>
+
+            Employees
 
         </p>
 
-        <input
-            type="number"
-            id="employeeId"
-            placeholder="Enter Employee ID">
+    </div>
 
-        <button id="searchBtn">
+    <div class="stat-card">
 
-            Search Employee
+        <h2>
 
-        </button>
+            Docker
+
+        </h2>
+
+        <p>
+
+            Containerized
+
+        </p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2>
+
+            Redis
+
+        </h2>
+
+        <p>
+
+            Cache Enabled
+
+        </p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2>
+
+            AWS
+
+        </h2>
+
+        <p>
+
+            Production
+
+        </p>
+
+    </div>
+
+</section>
+
+    <!-- ===========================
+         Search Card
+    ============================ -->
+
+    <section class="search-section">
+
+        <div class="search-card">
+
+            <h2>
+
+                🔍 Search Employee
+
+            </h2>
+
+            <div class="search-box">
+
+                <input
+
+                    type="number"
+
+                    id="employeeId"
+
+                    placeholder="Enter Employee ID"
+
+                    autocomplete="off">
+
+                <!-- Phase 1C -->
+                <button
+                    id="clearBtn"
+                    class="clear-btn">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+            <button id="searchBtn">
+
+                Search Employee
+
+            </button>
+
+        </div>
 
     </section>
 
+    <!-- ===========================
+         Result Card
+    ============================ -->
 
-    <section id="result">
+    <section class="result-section">
 
-        Search an employee to view details.
+        <div
+            id="result"
+            class="result-card">
+
+            <h3>
+
+                Employee Details
+
+            </h3>
+
+            <p>
+
+                Search an employee to view complete details.
+
+            </p>
+
+        </div>
 
     </section>
 
+    <!-- ===========================
+         Feature Cards
+    ============================ -->
 
     <section class="features">
 
-        <h2>System Features</h2>
+        <div class="feature-card">
 
-        <div class="feature-grid">
+            <div class="icon">
 
-            <div class="feature-card">
-
-                <h3>Employee Search</h3>
-
-                <p>
-
-                    Retrieve employee information instantly using Employee ID.
-
-                </p>
+                🔍
 
             </div>
 
-            <div class="feature-card">
+            <h3>
 
-                <h3>HR Dashboard</h3>
+                Employee Search
 
-                <p>
+            </h3>
 
-                    Add, Update and Delete employee records.
+            <p>
 
-                </p>
+                Search employee information instantly using Employee ID.
 
-                <a href="hr.html" class="btn">
+            </p>
 
-                    Open Dashboard
+        </div>
 
-                </a>
+        <div class="feature-card">
 
-            </div>
+            <div class="icon">
 
-            <div class="feature-card">
-
-                <h3>Monitoring</h3>
-
-                <p>
-
-                    Prometheus, Grafana and Exporters continuously monitor the infrastructure.
-
-                </p>
+                👨‍💼
 
             </div>
 
-            <div class="feature-card">
+            <h3>
 
-                <h3>CI/CD Pipeline</h3>
+                HR Dashboard
 
-                <p>
+            </h3>
 
-                    Automatic deployment using GitHub Actions, Docker Compose and AWS.
+            <p>
 
-                </p>
+                Add, Update and Delete employees from the HR Portal.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="icon">
+
+                📊
 
             </div>
+
+            <h3>
+
+                Monitoring
+
+            </h3>
+
+            <p>
+
+                Integrated with Prometheus & Grafana for monitoring.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="icon">
+
+                🚀
+
+            </div>
+
+            <h3>
+
+                CI/CD Pipeline
+
+            </h3>
+
+            <p>
+
+                Automated deployment using GitHub Actions and AWS.
+
+            </p>
 
         </div>
 
     </section>
 
-
-    <section class="tech-stack">
-
-        <h2>Technology Stack</h2>
-
-        <div class="stack">
-
-            <span>Docker</span>
-
-            <span>Docker Compose</span>
-
-            <span>Python</span>
-
-            <span>Flask</span>
-
-            <span>PostgreSQL</span>
-
-            <span>Redis</span>
-
-            <span>Prometheus</span>
-
-            <span>Grafana</span>
-
-            <span>GitHub Actions</span>
-
-            <span>AWS EC2</span>
-
-            <span>S3</span>
-
-            <span>CloudFront</span>
-
-        </div>
-
-    </section>
-
+    <!-- ===========================
+         Footer
+    ============================ -->
 
     <footer>
 
         <p>
 
-            Employee Portal • DevOps Project • Production Ready
+            Built with
+
+            Docker • Flask • PostgreSQL • Redis • Prometheus • Grafana • AWS
+
+        </p>
+
+        <p>
+
+            © 2026 Employee Portal
 
         </p>
 
     </footer>
 
-</div>
+    <!-- ===========================
+     Toast Notification
+=========================== -->
 
-<script src="app.js"></script>
+<div id="toast" class="toast">
+
+    <span id="toastMessage">
+
+        Success
+
+    </span>
+
+</div>
+    <script src="app.js"></script>
 
 </body>
 

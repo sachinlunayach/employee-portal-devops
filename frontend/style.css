@@ -1,253 +1,504 @@
-/* ===========================
-   Google Font
-=========================== */
+/* =====================================================
+   Employee Portal
+   Phase 1B-1
+   Modern Production UI
+===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap');
+:root{
 
-/* ===========================
-   Global
-=========================== */
+    --primary:#2563eb;
+
+    --primary-dark:#1d4ed8;
+
+    --success:#22c55e;
+
+    --danger:#ef4444;
+
+    --white:#ffffff;
+
+    --text:#e5e7eb;
+
+    --muted:#94a3b8;
+
+    --card:rgba(255,255,255,.08);
+
+    --border:rgba(255,255,255,.10);
+
+    --shadow:0 15px 40px rgba(0,0,0,.35);
+
+    --radius:18px;
+
+}
 
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
 }
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
 body{
 
-    font-family:'Inter',sans-serif;
+    font-family:"Poppins",sans-serif;
+
+    color:var(--text);
 
     background:
-    radial-gradient(circle at top left,#1e3a8a,#0f172a 45%),
-    radial-gradient(circle at bottom right,#0f766e,#111827 60%);
+    radial-gradient(circle at top left,#1d4ed8 0%,transparent 35%),
 
-    color:#ffffff;
+    radial-gradient(circle at bottom right,#0ea5e9 0%,transparent 30%),
+
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #111827,
+        #020617
+    );
 
     min-height:100vh;
+
+}
+
+/* =====================================================
+   Navbar
+===================================================== */
+
+.navbar{
+
+    width:100%;
+
+    height:74px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 70px;
+
+    position:sticky;
+
+    top:0;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(15,23,42,.65);
+
+    border-bottom:1px solid var(--border);
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    letter-spacing:.5px;
+
+}
+
+.dashboard-btn{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-dark)
+
+    );
+
+    padding:12px 24px;
+
+    border-radius:999px;
+
+    transition:.30s;
+
+    font-weight:600;
+
+}
+
+.dashboard-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+    0 12px 30px rgba(37,99,235,.35);
+
+}
+
+/* =====================================================
+   Hero
+===================================================== */
+
+.hero{
+
+    max-width:900px;
+
+    margin:70px auto 40px;
+
+    text-align:center;
+
+    padding:0 25px;
+
+}
+
+.hero h1{
+
+    font-size:52px;
+
+    font-weight:700;
+
+    color:white;
+
+    margin-bottom:18px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+}
+
+/* =====================================================
+   Search Section
+===================================================== */
+
+.search-section{
 
     display:flex;
 
     justify-content:center;
 
-    align-items:center;
-
-    padding:40px 20px;
+    margin:45px 0;
 
 }
-
-/* ===========================
-   Main Container
-=========================== */
-
-.container{
-
-    width:100%;
-
-    max-width:1100px;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.12);
-
-    border-radius:24px;
-
-    padding:45px;
-
-    box-shadow:
-    0 20px 60px rgba(0,0,0,.45);
-
-}
-
-/* ===========================
-   Header
-=========================== */
-
-header{
-
-    text-align:center;
-
-    margin-bottom:45px;
-
-}
-
-header h1{
-
-    font-family:'Poppins',sans-serif;
-
-    font-size:42px;
-
-    margin-bottom:12px;
-
-}
-
-.subtitle{
-
-    color:#cbd5e1;
-
-    font-size:18px;
-
-}
-
-/* ===========================
-   Search Card
-=========================== */
 
 .search-card{
 
-    background:rgba(255,255,255,.06);
+    width:650px;
 
-    border:1px solid rgba(255,255,255,.10);
+    background:var(--card);
 
-    border-radius:18px;
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
 
     padding:35px;
-
-    margin-bottom:35px;
 
 }
 
 .search-card h2{
 
-    margin-bottom:10px;
+    text-align:center;
+
+    color:white;
+
+    margin-bottom:28px;
 
 }
 
-.description{
+/* =====================================================
+   Search Input
+===================================================== */
 
-    color:#cbd5e1;
+.search-box{
 
-    margin-bottom:25px;
+    position:relative;
+
+    margin-bottom:22px;
 
 }
 
-/* ===========================
-   Input
-=========================== */
-
-input{
+.search-box input{
 
     width:100%;
 
-    padding:16px;
-
-    border-radius:12px;
+    padding:18px 60px 18px 20px;
 
     border:none;
 
     outline:none;
 
-    margin-bottom:20px;
+    border-radius:14px;
 
-    font-size:16px;
+    font-size:17px;
 
     background:#f8fafc;
 
+    transition:.30s;
+
 }
 
-/* ===========================
-   Button
-=========================== */
+.search-box input:focus{
 
-button{
+    box-shadow:
 
-    width:100%;
+    0 0 0 4px rgba(37,99,235,.25);
 
-    padding:16px;
+}
+
+/* =====================================================
+   Clear Button
+===================================================== */
+
+.clear-btn{
+
+    position:absolute;
+
+    top:50%;
+
+    right:15px;
+
+    transform:translateY(-50%);
+
+    width:36px;
+
+    height:36px;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:50%;
 
     cursor:pointer;
 
-    font-size:16px;
+    display:none;
 
-    font-weight:600;
+    font-size:18px;
 
-    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    background:#e5e7eb;
+
+    transition:.30s;
+
+}
+
+.clear-btn:hover{
+
+    background:var(--danger);
 
     color:white;
 
-    transition:.3s;
+}
+
+/* =====================================================
+   Search Button
+===================================================== */
+
+#searchBtn{
+
+    width:100%;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-dark)
+
+    );
+
+    transition:.30s;
 
 }
 
-button:hover{
+#searchBtn:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 
-    box-shadow:0 12px 25px rgba(37,99,235,.45);
+    box-shadow:
+
+    0 12px 30px rgba(37,99,235,.35);
+
+}
+/* =====================================================
+   Result Section
+===================================================== */
+
+.result-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin:40px 0 60px;
 
 }
 
-/* ===========================
-   Result Card
-=========================== */
+.result-card{
 
-#result{
+    width:650px;
 
-    margin-bottom:40px;
-
-    background:rgba(255,255,255,.08);
-
-    border-radius:18px;
+    min-height:180px;
 
     padding:30px;
 
-    border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius);
 
-    color:#f8fafc;
+    background:var(--card);
 
-    line-height:1.8;
+    backdrop-filter:blur(18px);
 
-    min-height:120px;
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
 
 }
 
-/* ===========================
-   Features
-=========================== */
+.result-card:hover{
 
-.features{
+    transform:translateY(-4px);
+
+}
+
+.result-card h3{
+
+    color:#fff;
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+}
+
+.result-card p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:16px;
+
+}
+
+/* Employee Details */
+
+.employee-info{
+
+    display:grid;
+
+    gap:16px;
 
     margin-top:20px;
 
 }
 
-.features h2{
+.info-row{
 
-    margin-bottom:25px;
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 18px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.05);
 
 }
 
-.feature-grid{
+.info-title{
+
+    color:#94a3b8;
+
+    font-weight:500;
+
+}
+
+.info-value{
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+
+/* =====================================================
+   Features
+===================================================== */
+
+.features{
+
+    width:min(1200px,90%);
+
+    margin:auto;
 
     display:grid;
 
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 
-    gap:20px;
+    gap:25px;
+
+    margin-bottom:80px;
 
 }
 
 .feature-card{
 
-    background:rgba(255,255,255,.07);
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(16px);
 
     border-radius:18px;
 
-    padding:25px;
+    padding:35px 25px;
 
-    border:1px solid rgba(255,255,255,.08);
+    text-align:center;
 
-    transition:.3s;
+    transition:.35s;
+
+    box-shadow:var(--shadow);
 
 }
 
@@ -255,130 +506,677 @@ button:hover{
 
     transform:translateY(-8px);
 
-    box-shadow:0 20px 40px rgba(0,0,0,.25);
+    border-color:#3b82f6;
+
+}
+
+.icon{
+
+    width:72px;
+
+    height:72px;
+
+    margin:auto;
+
+    margin-bottom:20px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:34px;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #2563eb,
+
+        #1d4ed8
+
+    );
 
 }
 
 .feature-card h3{
 
+    color:white;
+
     margin-bottom:15px;
+
+    font-size:22px;
 
 }
 
 .feature-card p{
 
-    color:#d1d5db;
+    color:#94a3b8;
 
-    line-height:1.7;
-
-}
-
-/* ===========================
-   Dashboard Button
-=========================== */
-
-.btn{
-
-    display:inline-block;
-
-    margin-top:18px;
-
-    text-decoration:none;
-
-    color:white;
-
-    background:#2563eb;
-
-    padding:12px 20px;
-
-    border-radius:10px;
-
-    transition:.3s;
+    line-height:1.8;
 
 }
 
-.btn:hover{
+/* ==========================================
+   Stats Section
+========================================== */
 
-    background:#1d4ed8;
+.stats{
 
-}
+    width:min(1200px,90%);
 
-/* ===========================
-   Tech Stack
-=========================== */
+    margin:20px auto 60px;
 
-.tech-stack{
+    display:grid;
 
-    margin-top:50px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
-}
-
-.tech-stack h2{
-
-    margin-bottom:25px;
+    gap:22px;
 
 }
 
-.stack{
+.stat-card{
 
-    display:flex;
+    background:var(--card);
 
-    flex-wrap:wrap;
+    border:1px solid var(--border);
 
-    gap:12px;
+    backdrop-filter:blur(16px);
 
-}
+    border-radius:18px;
 
-.stack span{
-
-    background:#1e293b;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    padding:12px 18px;
-
-    border-radius:999px;
-
-    font-size:14px;
-
-}
-
-/* ===========================
-   Footer
-=========================== */
-
-footer{
-
-    margin-top:55px;
+    padding:30px;
 
     text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.30s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#3b82f6;
+
+}
+
+.stat-card h2{
+
+    color:#fff;
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+.stat-card p{
 
     color:#94a3b8;
 
 }
 
-/* ===========================
-   Responsive
-=========================== */
+/* =====================================================
+   Footer
+===================================================== */
 
-@media(max-width:768px){
+footer{
 
-    .container{
+    margin-top:30px;
+
+    padding:40px 20px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    background:rgba(0,0,0,.18);
+
+    text-align:center;
+
+}
+
+footer p:first-child{
+
+    color:white;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+}
+
+footer p:last-child{
+
+    color:#94a3b8;
+
+}
+
+
+/* =====================================================
+   Animations
+===================================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.hero,
+
+.search-card,
+
+.result-card,
+
+.feature-card{
+
+    animation:fadeUp .7s ease;
+
+}
+
+
+/* =====================================================
+   Utility Classes
+===================================================== */
+
+.hidden{
+
+    display:none;
+
+}
+
+.center{
+
+    text-align:center;
+
+}
+
+.text-success{
+
+    color:#22c55e;
+
+}
+
+.text-danger{
+
+    color:#ef4444;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/* =====================================================
+   Responsive Design
+===================================================== */
+
+@media (max-width:1100px){
+
+    .navbar{
+
+        padding:0 35px;
+
+    }
+
+    .hero h1{
+
+        font-size:44px;
+
+    }
+
+    .search-card,
+
+    .result-card{
+
+        width:90%;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .navbar{
+
+        height:auto;
+
+        padding:18px 20px;
+
+        flex-direction:column;
+
+        gap:15px;
+
+    }
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    .dashboard-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .hero{
+
+        margin-top:50px;
+
+    }
+
+    .hero h1{
+
+        font-size:34px;
+
+        line-height:1.3;
+
+    }
+
+    .hero p{
+
+        font-size:16px;
+
+    }
+
+    .search-card{
 
         padding:25px;
 
     }
 
-    header h1{
+    .search-box input{
 
-        font-size:32px;
+        padding:16px 55px 16px 18px;
+
+        font-size:16px;
 
     }
 
-    .feature-grid{
+    #searchBtn{
+
+        padding:15px;
+
+    }
+
+    .result-card{
+
+        padding:22px;
+
+    }
+
+    .info-row{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .features{
 
         grid-template-columns:1fr;
 
+        width:92%;
+
     }
+
+}
+
+@media (max-width:480px){
+
+    .hero h1{
+
+        font-size:28px;
+
+    }
+
+    .hero p{
+
+        font-size:15px;
+
+    }
+
+    .search-card,
+
+    .result-card{
+
+        width:94%;
+
+        padding:20px;
+
+    }
+
+    .feature-card{
+
+        padding:28px 20px;
+
+    }
+
+    .icon{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:28px;
+
+    }
+
+    footer{
+
+        padding:30px 18px;
+
+    }
+
+}
+
+/* =====================================================
+   Custom Scrollbar
+===================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0f172a;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* =====================================================
+   Selection
+===================================================== */
+
+::selection{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+/* =====================================================
+   Focus States
+===================================================== */
+
+button:focus,
+
+input:focus,
+
+a:focus{
+
+    outline:none;
+
+}
+
+/* =====================================================
+   Smooth Transitions
+===================================================== */
+
+button,
+
+input,
+
+.feature-card,
+
+.result-card,
+
+.search-card,
+
+.dashboard-btn{
+
+    transition:.30s ease;
+
+}
+
+/* =====================================================
+   Glass Hover
+===================================================== */
+
+.search-card:hover,
+
+.result-card:hover{
+
+    border-color:rgba(59,130,246,.35);
+
+}
+
+/* =====================================================
+   Button Disabled
+===================================================== */
+
+button:disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+
+}
+
+/* =====================================================
+   Loading State
+===================================================== */
+
+.loading{
+
+    pointer-events:none;
+
+    opacity:.75;
+
+}
+
+/* =====================================================
+   Fade Utility
+===================================================== */
+
+.fade{
+
+    animation:fadeUp .45s ease;
+
+}
+
+/* =====================================================
+   Status Badge
+===================================================== */
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.status.online{
+
+    background:rgba(34,197,94,.18);
+
+    color:#22c55e;
+
+}
+
+.status.cache{
+
+    background:rgba(37,99,235,.18);
+
+    color:#60a5fa;
+
+}
+
+.status.error{
+
+    background:rgba(239,68,68,.18);
+
+    color:#ef4444;
+
+}
+
+/* =====================================================
+   Empty State
+===================================================== */
+
+.empty-state{
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    color:#94a3b8;
+
+}
+
+.empty-state h3{
+
+    color:#fff;
+
+    margin-bottom:12px;
+
+}
+
+/* =====================================================
+   Reduced Motion
+===================================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+/* =====================================================
+   Toast Notification
+===================================================== */
+
+.toast{
+
+    position:fixed;
+
+    top:25px;
+
+    right:25px;
+
+    min-width:280px;
+
+    padding:16px 22px;
+
+    border-radius:14px;
+
+    color:#fff;
+
+    font-weight:600;
+
+    background:#2563eb;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+    transform:translateX(420px);
+
+    opacity:0;
+
+    transition:.40s ease;
+
+    z-index:9999;
+
+}
+
+.toast.show{
+
+    transform:translateX(0);
+
+    opacity:1;
+
+}
+
+.toast.success{
+
+    background:#16a34a;
+
+}
+
+.toast.error{
+
+    background:#dc2626;
+
+}
+
+.toast.info{
+
+    background:#2563eb;
 
 }

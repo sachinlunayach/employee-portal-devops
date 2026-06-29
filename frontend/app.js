@@ -1,39 +1,360 @@
-const button = document.getElementById("searchBtn");
+const employeeInput = document.getElementById("employeeId");
+const searchBtn = document.getElementById("searchBtn");
+const clearBtn = document.getElementById("clearBtn");
 const result = document.getElementById("result");
 
-button.addEventListener("click", async () => {
+const API_URL =
+    "https://djrsvxg7njjaz.cloudfront.net/employee?id=";
+const toast =
+    document.getElementById("toast");
 
-    const employeeId = document.getElementById("employeeId").value;
+const toastMessage =
+    document.getElementById("toastMessage");
 
-    if (!employeeId) {
-        result.innerHTML = "<p>Please enter Employee ID here</p>";
-        return;
-    }
+function showToast(
 
-    try {
+    message,
 
-        const response = await fetch("https://djrsvxg7njjaz.cloudfront.net/employee?id=" + employeeId);
-        if (!response.ok) {
-            throw new Error("Employee Not Found");
-        }
+    type="success"
 
-        const employee = await response.json();
+){
 
-        result.innerHTML = `
-            <h3>${employee.name}</h3>
-            <p><strong>ID:</strong> ${employee.id}</p>
-            <p><strong>Role:</strong> ${employee.role}</p>
-            <p><strong>Salary:</strong> ${employee.salary}</p>
-        `;
+    toast.className="toast";
 
-    } catch (error) {
+    toast.classList.add(type);
 
-        result.innerHTML = `
-            <p style="color:red;">
-                ${error.message}
-            </p>
-        `;
+    toast.classList.add("show");
+
+    toastMessage.innerText=message;
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },2500);
+
+}
+
+employeeInput.focus();
+
+/* ===========================
+   Show / Hide Clear Button
+=========================== */
+
+employeeInput.addEventListener("input", () => {
+
+    clearBtn.style.display =
+        employeeInput.value.trim() !== ""
+            ? "block"
+            : "none";
+
+});
+
+/* ===========================
+   Clear Search
+=========================== */
+
+clearBtn.addEventListener("click", () => {
+
+    employeeInput.value = "";
+
+    clearBtn.style.display = "none";
+
+    result.innerHTML = `
+
+        <h3>Employee Details</h3>
+
+        <p>
+
+            Search an employee to view complete details.
+
+        </p>
+
+    `;
+
+    employeeInput.focus();
+
+});
+
+/* ===========================
+   Enter Key Search
+=========================== */
+
+employeeInput.addEventListener("keydown", e => {
+
+    if (e.key === "Enter") {
+
+        searchEmployee();
 
     }
 
 });
+
+/* ===========================
+   Search Button
+=========================== */
+
+searchBtn.addEventListener(
+
+    "click",
+
+    searchEmployee
+
+);
+
+/* ===========================
+   Search Employee
+=========================== */
+
+async function searchEmployee() {
+
+    const employeeId =
+        employeeInput.value.trim();
+
+    if (!employeeId) {
+
+        result.innerHTML = `
+
+            <div class="empty-state">
+
+                <h3>
+
+                    Employee ID Required
+
+                </h3>
+
+                <p>
+
+                    Please enter a valid Employee ID.
+
+                </p>
+
+            </div>
+
+        `;
+	    showToast(
+
+        "Please enter Employee ID",
+
+        "info"
+
+    );
+
+        employeeInput.focus();
+
+        return;
+
+    }
+
+    try {
+
+        searchBtn.disabled = true;
+
+        searchBtn.innerText = "Searching...";
+
+        result.innerHTML = `
+
+            <div class="empty-state">
+
+                <h3>
+
+                    Searching...
+
+                </h3>
+
+                <p>
+
+                    Please wait.
+
+                </p>
+
+            </div>
+
+        `;
+
+        const response =
+            await fetch(API_URL + employeeId);
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Employee Not Found"
+            );
+
+        }
+
+        const employee =
+            await response.json();
+
+        result.innerHTML = `
+
+            <h3>
+
+                👤 ${employee.name}
+
+            </h3>
+
+            <div class="employee-info fade">
+
+                <div class="info-row">
+
+                    <span class="info-title">
+
+                        Employee ID
+
+                    </span>
+
+                    <span class="info-value">
+
+                        ${employee.id}
+
+                    </span>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span class="info-title">
+
+                        Role
+
+                    </span>
+
+                    <span class="info-value">
+
+                        ${employee.role}
+
+                    </span>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span class="info-title">
+
+                        Salary
+
+                    </span>
+
+                    <span class="info-value">
+
+                        ${employee.salary}
+
+                    </span>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span class="info-title">
+
+                        Status
+
+                    </span>
+
+                    <span class="status online">
+
+                        Employee Found
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+	showToast(
+
+    "Employee Found",
+
+    "success"
+
+);
+
+    }
+
+    catch (error) {
+
+        result.innerHTML = `
+
+            <div class="empty-state">
+
+                <h3>
+
+                    Employee Not Found
+
+                </h3>
+
+                <p>
+
+                    No employee exists with ID
+
+                    <strong>
+
+                        ${employeeId}
+
+                    </strong>
+
+                </p>
+
+            </div>
+
+        `;
+	    
+	     showToast(
+
+        "Employee Not Found",
+
+        "error"
+
+    );
+
+    }
+
+    finally {
+
+        searchBtn.disabled = false;
+
+        searchBtn.innerText =
+            "Search Employee";
+
+    }
+
+}
+
+/* ===========================
+   Load Employee Count
+=========================== */
+
+async function loadEmployeeCount(){
+
+    try{
+
+        const response = await fetch(
+
+            "https://djrsvxg7njjaz.cloudfront.net/employees"
+
+        );
+
+        if(!response.ok) return;
+
+        const data = await response.json();
+
+        document.getElementById(
+
+            "employeeCount"
+
+        ).innerText = data.count;
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+loadEmployeeCount();
