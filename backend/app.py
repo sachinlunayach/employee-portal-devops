@@ -102,7 +102,8 @@ def health():
             "status": "healthy",
             "database": "connected",
             "redis": "connected",
-            "service": "employee-backend"
+            "service": "employee-backend",
+            "version": "v2"
         }), 200
 
     except Exception as e:
